@@ -1,0 +1,62 @@
+            .containerSurvey {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            }
+
+            h4,
+            h5 {
+            margin-top: 20px;
+            margin-bottom: 15px;
+            color: #343a40;
+            }
+
+            .form-check-label,
+            .form-label {
+            font-weight: normal;
+            /* Override Bootstrap's bold for labels */
+            }
+
+            .question-group {
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #fcfcfc;
+            }
+
+            .form-control-sm {
+            height: calc(1.5em + .5rem + 2px);
+            /* Adjust height for small inputs */
+            padding: 0 10px;
+            }
+            .btn-e-survey {
+            background-color: #009999;
+            color: #fff;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            }
+
+            .btn-e-survey:hover {
+            background-color: #007777;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 153, 153, 0.4);
+            }
+
+            .btn-e-survey:active {
+            transform: scale(0.98);
+            }
+
+            .btn-e-survey span {
+            position: relative;
+            z-index: 1;
+            }
