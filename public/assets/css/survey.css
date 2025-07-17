@@ -20,14 +20,6 @@
             /* Override Bootstrap's bold for labels */
             }
 
-            .question-group {
-            border: 1px solid #dee2e6;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
-            background-color: #fcfcfc;
-            }
-
             .form-control-sm {
             height: calc(1.5em + .5rem + 2px);
             /* Adjust height for small inputs */

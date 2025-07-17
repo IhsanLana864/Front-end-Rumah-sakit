@@ -12,6 +12,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SurveyController;
 
 // ==============================
 // 🔰 Beranda
@@ -41,6 +42,7 @@ Route::prefix('profil')->name('profil.')->group(function () {
 Route::view('/kegiatan', 'kegiatan')->name('kegiatan');
 Route::view('/artikel', 'artikel')->name('artikel');
 Route::view('/e-survey', 'esurvey')->name('esurvey');
+Route::post('/submit-survey', [SurveyController::class, 'submit'])->name('submit.survey');
 Route::view('/kontak', 'kontak')->name('kontak');
 
 // ==============================
@@ -50,6 +52,9 @@ Route::view('/kontak', 'kontak')->name('kontak');
 // Rute untuk mengelola profil pengguna yang sedang login
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [AdminController::class, 'showProfile'])->name('profile');
+    Route::get('/profile/edit', [AdminController::class, 'editMyProfile'])->name('profile.edit');
+    Route::patch('/profile', [AdminController::class, 'updateMyProfile'])->name('profile.update');
+    // Route::resource('admin/akun', AdminController::class)->except(['show', 'edit', 'update']); // Cek apakah ada konflik dengan route di atas
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

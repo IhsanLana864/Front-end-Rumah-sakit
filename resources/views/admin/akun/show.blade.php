@@ -8,7 +8,7 @@
             </div>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.akun.index') }}">Home</a></li>
-                <li class="breadcrumb-item">Admin</li>
+                <li class="breadcrumb-item">Setting</li>
             </ul>
         </div>
         <div class="page-header-right ms-auto">
@@ -17,12 +17,6 @@
                     <a href="javascript:void(0)" class="page-header-right-close-toggle">
                         <i class="feather-arrow-left me-2"></i>
                         <span>Back</span>
-                    </a>
-                </div>
-                <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
-                    <a href="{{ route('admin.akun.create') }}" class="btn btn-primary">
-                        <i class="feather-plus me-2"></i>
-                        <span>New Data</span>
                     </a>
                 </div>
             </div>
@@ -39,25 +33,40 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card stretch stretch-full">
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table table-hover" id="AdminTable">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Email</th>
-                                        <th class="text-end">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                        <tr class="single-item">
-                                            <td></td>
-                                            <td>{{ $admin->name }}</td>
-                                            <td>{{ $admin->email }}</td>
-                                        </tr>
-                                </tbody>
-                            </table>
+                    <div class="card-body py-5">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Name :</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ $admin->name }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email :</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ $admin->email }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Role :</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ $admin->role }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <a href="{{ route('profile.edit') }}">
+                                    <span class="btn btn-primary" data-mdb-ripple-init>Edit</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

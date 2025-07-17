@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Survey;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class SurveyController extends Controller
 {
@@ -14,31 +15,38 @@ class SurveyController extends Controller
         return view('admin', compact('surveys'));
     }
 
-    // public function create()
-    // {
-    //     return view('admin.partner.create');
-    // }
+    public function submit(Request $request)
+    {
+        $validatedData = $request->validate([
+            'jenis_kelamin' => 'required|string|max:255',
+            'pendidikan' => 'required|string|max:255',
+            'pekerjaan' => 'required|string|max:255',
+            'dokumen' => 'required|string|max:255',
+            'survey1' => 'required|string|max:255',
+            'survey2' => 'required|string|max:255',
+            'survey3' => 'required|string|max:255',
+            'survey4' => 'required|string|max:255',
+            'survey5' => 'required|string|max:255',
+            'survey6' => 'required|string|max:255',
+            'survey7' => 'required|string|max:255',
+            'survey8' => 'required|string|max:255',
+            'survey9' => 'required|string|max:255',
+        ]);
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-    //         'nama' => 'nullable|string|max:255'
-    //     ]);
+        $validatedData['tanggal'] = Carbon::now()->format('Y-m-d');
+        $validatedData['jam'] = Carbon::now()->format('H:i:s');
 
-    //     $fotoPath = null;
-    //     if ($request->hasFile('gambar')) {
-    //         $file = $request->file('gambar');
-    //         $fotoPath = $file->store('partner', 'public'); 
-    //     }
+        if ($validatedData['pekerjaan'] === 'LAINNYA' && !empty($validatedData['pekerjaan_lainnya'])) {
+            // Pekerjaan sudah 'LAINNYA', data pekerjaan_lainnya akan disimpan
+        } else {
+            // Jika pekerjaan bukan 'LAINNYA' atau pekerjaan_lainnya kosong, set ke null
+            $validatedData['pekerjaan_lainnya'] = null;
+        }
 
-    //     Partner::create([
-    //         'gambar' => $fotoPath,
-    //         'nama' => $request->nama
-    //     ]);
+        Survey::create($validatedData);
 
-    //     return redirect()->route('admin.partner.index')->with('success', 'Data berhasil ditambah');
-    // }
+        return redirect()->route('esurvey')->with('success', 'Data berhasil ditambah');
+    }
 
     // public function edit(Partner $partner)
     // {

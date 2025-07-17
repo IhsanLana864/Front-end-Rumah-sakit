@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule; // <-- Ganti Rules menjadi Rule untuk validasi unique
-use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -16,27 +16,37 @@ class AdminController extends Controller
     {
         $admin = Auth::user();
 
-        if ($admin) {;
+        if ($admin) {
             return view('admin.akun.show', compact('admin'));
         } else {
             return redirect()->route('login')->with('error', 'Anda harus login sebagai admin untuk mengakses halaman ini.');
         }
     }
 
-    public function edit(User $user)
+    public function editMyProfile()
     {
-        return view('admin.akun.edit', compact('user'));
+        $admin = Auth::user();
+
+        if (!$admin) {
+            return redirect()->route('login')->with('error', 'Silakan login untuk mengedit profil Anda.');
+        }
+
+        return view('admin.akun.edit', compact('admin'));
     }
 
-    public function update(Request $request, User $user)
+    public function updateMyProfile(Request $request)
     {
+        $admin = Auth::user();
+
+        if (!$admin) {
+            return redirect()->route('login')->with('error', 'Autentikasi diperlukan untuk memperbarui profil.');
+        }
+
         // Validasi data input
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            // ## PENINGKATAN 1: Validasi email diperbaiki agar tidak error saat email tidak diubah ##
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            // Password dibuat tidak wajib diisi saat update
-            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($admin->id)],
+            'password' => ['nullable', 'confirmed', Password::defaults()],
         ]);
 
         // Siapkan data untuk diupdate
@@ -50,8 +60,8 @@ class AdminController extends Controller
             $updateData['password'] = Hash::make($request->password);
         }
 
-        $user->update($updateData);
+        $admin->update($updateData);
 
-        return redirect()->route('admin.akun.index')->with('success', 'Data admin berhasil diperbarui!');
+        return redirect()->route('profile')->with('success', 'Data admin berhasil diperbarui!');
     }
 }

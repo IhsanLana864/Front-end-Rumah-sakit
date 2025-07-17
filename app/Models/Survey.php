@@ -10,18 +10,20 @@ class Survey extends Model
     use HasFactory;
 
     protected $fillable = [
+        'tanggal',
+        'jam',
         'jenis_kelamin',
         'pendidikan',
         'pekerjaan',
         'dokumen',
-        's1',
-        's2',
-        's3',
-        's4',
-        's5',
-        's6',
-        's7',
-        's8',
-        's9',
+        'survey1',
+        'survey2',
+        'survey3',
+        'survey4',
+        'survey5',
+        'survey6',
+        'survey7',
+        'survey8',
+        'survey9',
     ];
 }
