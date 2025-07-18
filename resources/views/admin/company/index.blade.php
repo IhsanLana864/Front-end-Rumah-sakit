@@ -50,8 +50,11 @@
                                         <th>Alamat</th>
                                         <th>Long</th>
                                         <th>Lat</th>
+                                        <th>falsafah</th>
                                         <th>Visi</th>
                                         <th>Misi</th>
+                                        <th>Motto</th>
+                                        <th>Budaya Kerja</th>
                                         <th>Kontak</th>
                                         <th>Email</th>
                                         <th class="text-end">Actions</th>
@@ -67,8 +70,11 @@
                                             <td>{{ $company->alamat }}</td>
                                             <td>{{ $company->long }}</td>
                                             <td>{{ $company->lat }}</td>
+                                            <td>{{ $company->falsafah }}</td>
                                             <td>{{ $company->visi }}</td>
                                             <td>{{ $company->misi }}</td>
+                                            <td>{{ $company->motto }}</td>
+                                            <td>{{ $company->budaya_kerja }}</td>
                                             <td>{{ $company->kontak }}</td>
                                             <td>{{ $company->email }}</td>
                                             <td>

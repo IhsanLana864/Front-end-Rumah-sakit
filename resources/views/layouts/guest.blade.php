@@ -17,12 +17,13 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
-                <a href="/">
-
+                <a href="/admin" class="logo align-items-center me-auto me-xl-0" style="display: flex; align-items: center; gap: 10px; padding: 0 0 0 150px">
+                    <img src="{{ asset('assets/img/logo-rs.svg') }}" alt="RSUD Sindangbarang Logo" class="logo-img" style="width: 10%;">
+                    <h1 class="sitename" style="font-size: 30px; font-weight: bold; margin: 0;">RSUD Sindangbarang</h1>
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div class="w-full sm:max-w-md mt-6 px-6 py-10 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>

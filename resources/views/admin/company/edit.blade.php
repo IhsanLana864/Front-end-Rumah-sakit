@@ -89,6 +89,11 @@
                             </div>
 
                             <div class="col-12 mb-4">
+                                <label class="form-label">Falsafah <span class="text-danger">*</span></label>
+                                <textarea class="form-control mb-2" name="falsafah" rows="3" required placeholder="Falsafah perusahaan">{{ old('falsafah', $company->falsafah) }}</textarea>
+                            </div>
+
+                            <div class="col-12 mb-4">
                                 <label class="form-label">Visi <span class="text-danger">*</span></label>
                                 <textarea class="form-control mb-2" name="visi" rows="3" required placeholder="Visi perusahaan">{{ old('visi', $company->visi) }}</textarea>
                             </div>
@@ -96,6 +101,16 @@
                             <div class="col-12 mb-4">
                                 <label class="form-label">Misi <span class="text-danger">*</span></label>
                                 <textarea class="form-control mb-2" name="misi" rows="3" required placeholder="Misi perusahaan">{{ old('misi', $company->misi) }}</textarea>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Motto <span class="text-danger">*</span></label>
+                                <textarea class="form-control mb-2" name="motto" rows="3" required placeholder="Motto perusahaan">{{ old('motto', $company->motto) }}</textarea>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Budaya Kerja <span class="text-danger">*</span></label>
+                                <textarea class="form-control mb-2" name="budaya_kerja" rows="3" required placeholder="Budaya Kerja perusahaan">{{ old('budaya_kerja', $company->budaya_kerja) }}</textarea>
                             </div>
 
                             <div class="col-12 mb-4">

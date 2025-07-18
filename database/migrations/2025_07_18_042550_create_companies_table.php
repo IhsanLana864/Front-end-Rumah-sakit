@@ -18,8 +18,11 @@ return new class extends Migration
             $table->longText('alamat');
             $table->string('long');
             $table->string('lat');
+            $table->longText('falsafah');
             $table->longText('visi');
             $table->longText('misi');
+            $table->longText('motto');
+            $table->longText('budaya_kerja');
             $table->string('kontak');
             $table->string('email');
             $table->timestamps();

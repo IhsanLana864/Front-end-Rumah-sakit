@@ -27,8 +27,11 @@ class CompanyController extends Controller
             'alamat' => 'required|string',
             'long' => 'required|string|max:255',
             'lat' => 'required|string|max:255',
+            'falsafah' => 'required|string',
             'visi' => 'required|string',
             'misi' => 'required|string',
+            'motto' => 'required|string',
+            'budaya_kerja' => 'required|string',
             'kontak' => 'required|string|max:255',
             'email' => 'required|string|max:255',
         ]);
@@ -45,8 +48,11 @@ class CompanyController extends Controller
             'alamat' => $request->alamat,
             'long' => $request->long,
             'lat' => $request->lat,
+            'falsafah' => $request->falsafah,
             'visi' => $request->visi,
             'misi' => $request->misi,
+            'motto' => $request->motto,
+            'budaya_kerja' => $request->budaya_kerja,
             'kontak' => $request->kontak,
             'email' => $request->email
         ]);
@@ -67,8 +73,11 @@ class CompanyController extends Controller
             'alamat' => 'required|string',
             'long' => 'required|string|max:255',
             'lat' => 'required|string|max:255',
+            'falsafah' => 'required|string',
             'visi' => 'required|string',
             'misi' => 'required|string',
+            'motto' => 'required|string',
+            'budaya_kerja' => 'required|string',
             'kontak' => 'required|string|max:255',
             'email' => 'required|string|max:255',
         ]);
