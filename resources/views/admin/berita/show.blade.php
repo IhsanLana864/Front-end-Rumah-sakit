@@ -48,7 +48,7 @@
                                 <h3 class="mb-3">{{ $berita->judul ?? 'Judul Tidak Tersedia' }}</h3>
                                 {{-- Asumsikan 'detail' adalah kolom yang berisi isi/konten berita --}}
                                 <p><strong>Isi Berita:</strong></p>
-                                <div class="card-text">
+                                <div class="card-text" style="white-space: pre-wrap;">
                                     {!! $berita->detail ?? 'Tidak ada isi berita.' !!} {{-- Gunakan {!! !!} jika konten detail adalah HTML --}}
                                 </div>
                                 <hr>

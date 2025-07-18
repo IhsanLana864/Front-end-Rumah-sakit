@@ -70,7 +70,7 @@
 
                             <div class="col-12 mb-4">
                                 <label class="form-label">Alamat <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control mb-2" name="alamat" required placeholder="Alamat">
+                                <textarea type="text" class="form-control mb-2" name="alamat" required placeholder="Alamat"></textarea>
                             </div>
 
                             <div class="col-12 mb-4">
@@ -84,13 +84,28 @@
                             </div>
 
                             <div class="col-12 mb-4">
+                                <label class="form-label">Falsafah <span class="text-danger">*</span></label>
+                                <textarea type="text" class="form-control mb-2" name="falsafah" required placeholder="Falsafah"></textarea>
+                            </div>
+
+                            <div class="col-12 mb-4">
                                 <label class="form-label">Visi <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control mb-2" name="visi" required placeholder="Visi">
+                                <textarea type="text" class="form-control mb-2" name="visi" required placeholder="Visi"></textarea>
                             </div>
 
                             <div class="col-12 mb-4">
                                 <label class="form-label">Misi <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control mb-2" name="misi" required placeholder="Misi">
+                                <textarea type="text" class="form-control mb-2" name="misi" required placeholder="Misi"></textarea>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Motto <span class="text-danger">*</span></label>
+                                <textarea type="text" class="form-control mb-2" name="motto" required placeholder="Motto"></textarea>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Budaya Kerja <span class="text-danger">*</span></label>
+                                <textarea type="text" class="form-control mb-2" name="budaya_kerja" required placeholder="Budaya Kerja"></textarea>
                             </div>
 
                             <div class="col-12 mb-4">

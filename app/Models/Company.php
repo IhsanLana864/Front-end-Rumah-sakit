@@ -15,8 +15,11 @@ class Company extends Model
         'alamat',
         'long',
         'lat',
+        'falsafah',
         'visi',
         'misi',
+        'motto',
+        'budaya_kerja',
         'kontak',
         'email'
     ];
