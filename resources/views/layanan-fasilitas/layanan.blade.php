@@ -334,6 +334,75 @@
                 </div>
             </div>
 
+
+            <div class="container my-5" data-aos="fade-up" data-aos-delay="300">
+
+                <div class="section-title text-center mb-4">
+                    <h2>Jadwal Layanan</h2>
+                    <p>Temukan jadwal pendaftaran dan praktek untuk setiap layanan poliklinik kami.</p>
+                </div>
+
+                {{-- Wrapper untuk membuat tabel responsif --}}
+                <div class="table-responsive shadow-sm rounded">
+                    <table class="table table-striped table-hover mb-0">
+                        <thead class="table-dark text-center">
+                            <tr>
+                                <th scope="col" style="width: 5%;">No.</th>
+                                <th scope="col">Pelayanan</th>
+                                <th scope="col">Hari</th>
+                                <th scope="col">Jam Pendaftaran</th>
+                                <th scope="col">Jam Praktek</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td class="text-start">Pelayanan Umum</td>
+                                <td>Senin - Jumat</td>
+                                <td>08:00 - 12:00</td>
+                                <td>08:00 - 12:00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td class="text-start">Kesehatan Gigi dan Mulut</td>
+                                <td>Senin - Jumat</td>
+                                <td>08:00 - 12:00</td>
+                                <td>08:00 - 12:00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td class="text-start">Poliklinik Penyakit Dalam</td>
+                                <td>Kamis</td>
+                                <td>13:00 - 15:00</td>
+                                <td>16:00 - Selesai</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td class="text-start">Poliklinik Bedah</td>
+                                <td>Selasa</td>
+                                <td>13:00 - 15:00</td>
+                                <td>15:00 - Selesai</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td class="text-start">Poliklinik Obstetri dan Ginekologi</td>
+                                <td>Kamis & Jumat</td>
+                                <td>13:00 - 15:00</td>
+                                <td>16:00 - 18:00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6</th>
+                                <td class="text-start">Poliklinik Anestesi</td>
+                                <td>Senin & Jumat</td>
+                                <td>13:00 - 15:00</td>
+                                <td>15:00 - Selesai</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
             <div class="services-cta" data-aos="fade-up" data-aos-delay="400">
                 <div class="row">
                     <div class="col-lg-8 mx-auto text-center">
