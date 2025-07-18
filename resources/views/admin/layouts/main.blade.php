@@ -23,9 +23,9 @@
     <nav class="nxl-navigation">
         <div class="navbar-wrapper">
             <div class="m-header">
-                <a href="#" class="b-brand">
-                    <img src="{{ asset('assets/imgs/LOGO.png') }}" alt="" class="logo logo-lg" style="width: 20%;" />
-                    <img src="{{ asset('assets/imgs/LOGO.png') }}" alt="" class="logo logo-sm" style="width: 50%;" />
+                <a href="#" class="b-brand d-flex align-items-center">
+                    <img src="{{ asset('assets/img/logo-rs.svg') }}" alt="RSUD Sindangbarang Logo" class="logo-img" style="width: 20%;">
+                    <h1 style="font-size:10px; padding: 5px 0 0 5px;">RSUD Sindangbarang</h1>
                 </a>
             </div>
             <div class="navbar-content">
@@ -190,7 +190,6 @@
     <script src="{{ asset('assets/js/common-init.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard-init.min.js') }}"></script>
     <script src="{{ asset('assets/js/theme-customizer-init.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     @stack('scripts')
     </body>

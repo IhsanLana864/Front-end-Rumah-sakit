@@ -32,11 +32,8 @@
             </div>
         </div>
     </div>
-    <!-- [ page-header ] end -->
-    <!-- [ Main Content ] start -->
     <div class="main-content">
         <div class="row">
-            <!-- [Mini Card] start -->
             <div class="col-12">
                 <div class="card stretch stretch-full">
                     <div class="card-body">
@@ -104,173 +101,148 @@
                     </div>
                 </div>
             </div>
-            <!-- [Mini Card] end -->
-            <!-- [Visitors Overview] start -->
             <div class="col-12">
                 <div class="card stretch stretch-full">
                     <div class="card-header">
                         <h5 class="card-title">E-Survey Overview</h5>
                     </div>
-                    <hr class="my-0"> 
-                    <div class="card-body"> 
+                    <hr class="my-0">
+                    <div class="card-body">
                         <div class="row row justify-content-around">
-                            <div class="col-md-3"> <h5>Jenis Kelamin Responden</h5>
-                                <canvas id="jenisKelaminChart"></canvas>
-                            </div>
+                            <div class="col-md-3">
+                                <h5>Jenis Kelamin Responden</h5>
+                                <div id="jenisKelaminChart"></div> </div>
                             <div class="col-md-3">
                                 <h5>Pendidikan Responden</h5>
-                                <canvas id="pendidikanChart"></canvas>
-                            </div>
+                                <div id="pendidikanChart"></div> </div>
                             <div class="col-md-3">
                                 <h5>Pekerjaan Responden</h5>
-                                <canvas id="pekerjaanChart"></canvas>
-                            </div>
+                                <div id="pekerjaanChart"></div> </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- [Visitors Overview] end -->            
-        </div>
+            </div>
     </div>
 @endsection
 
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const dataJenisKelamin = {
+            // ... (Kode JavaScript yang sudah ada untuk input "Lainnya...") ...
+
+            // --- Data dari Controller Laravel (Contoh Dummy) ---
+            // Pastikan variabel ini diteruskan dari controller Anda
+            const jumlahLakiLaki = {{ $jumlahLakiLaki ?? 0 }};
+            const jumlahPerempuan = {{ $jumlahPerempuan ?? 0 }};
+
+            const jumlahSD = {{ $jumlahSD ?? 0 }};
+            const jumlahSMP = {{ $jumlahSMP ?? 0 }};
+            const jumlahSMA = {{ $jumlahSMA ?? 0 }};
+            const jumlahS1 = {{ $jumlahS1 ?? 0 }};
+            const jumlahS2 = {{ $jumlahS2 ?? 0 }};
+            const jumlahS3 = {{ $jumlahS3 ?? 0 }};
+
+            const jumlahPNS = {{ $jumlahPNS ?? 0 }};
+            const jumlahTNI = {{ $jumlahTNI ?? 0 }};
+            const jumlahPOLRI = {{ $jumlahPOLRI ?? 0 }};
+            const jumlahSwasta = {{ $jumlahSwasta ?? 0 }};
+            const jumlahWirausaha = {{ $jumlahWirausaha ?? 0 }};
+            const jumlahLainnyaPekerjaan = {{ $jumlahLainnyaPekerjaan ?? 0 }};
+
+            // --- Konfigurasi dan Inisialisasi ApexCharts ---
+
+            // Chart Jenis Kelamin
+            const optionsJenisKelamin = {
+                chart: {
+                    type: 'pie',
+                    height: 350
+                },
                 labels: ['Laki-laki', 'Perempuan'],
-                datasets: [{
-                    label: 'Jumlah Responden',
-                    data: [{{ $jumlahLakiLaki ?? 0 }}, {{ $jumlahPerempuan ?? 0 }}], // Data dari controller
-                    backgroundColor: [
-                        'rgba(54, 162, 235, 0.8)', // Biru
-                        'rgba(255, 99, 132, 0.8)' // Merah
-                    ],
-                    borderColor: [
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 99, 132, 1)'
-                    ],
-                    borderWidth: 1
+                series: [jumlahLakiLaki, jumlahPerempuan],
+                colors: ['#36A2EB', '#FF6384'], // Warna yang lebih kuat dari rgba
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
                 }]
             };
+            // Pastikan elemen ditemukan sebelum inisialisasi
+            const jenisKelaminChartEl = document.querySelector("#jenisKelaminChart");
+            if (jenisKelaminChartEl) {
+                const jenisKelaminChart = new ApexCharts(jenisKelaminChartEl, optionsJenisKelamin);
+                jenisKelaminChart.render();
+            } else {
+                console.error("Elemen #jenisKelaminChart tidak ditemukan!");
+            }
 
-            const dataPendidikan = {
+
+            // Chart Pendidikan
+            const optionsPendidikan = {
+                chart: {
+                    type: 'pie',
+                    height: 350
+                },
                 labels: ['SD', 'SMP', 'SMA', 'S1', 'S2', 'S3'],
-                datasets: [{
-                    label: 'Jumlah Responden',
-                    data: [
-                        {{ $jumlahSD ?? 0 }},
-                        {{ $jumlahSMP ?? 0 }},
-                        {{ $jumlahSMA ?? 0 }},
-                        {{ $jumlahS1 ?? 0 }},
-                        {{ $jumlahS2 ?? 0 }},
-                        {{ $jumlahS3 ?? 0 }}
-                    ], // Data dari controller
-                    backgroundColor: [
-                        'rgba(255, 205, 86, 0.8)', // Kuning
-                        'rgba(75, 192, 192, 0.8)', // Hijau Teal
-                        'rgba(153, 102, 255, 0.8)', // Ungu
-                        'rgba(255, 159, 64, 0.8)', // Oranye
-                        'rgba(199, 199, 199, 0.8)', // Abu-abu
-                        'rgba(83, 109, 254, 0.8)' // Biru Muda
-                    ],
-                    borderColor: [
-                        'rgba(255, 205, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                        'rgba(199, 199, 199, 1)',
-                        'rgba(83, 109, 254, 1)'
-                    ],
-                    borderWidth: 1
+                series: [jumlahSD, jumlahSMP, jumlahSMA, jumlahS1, jumlahS2, jumlahS3],
+                colors: ['#FFCD56', '#4BC0C0', '#9966FF', '#FF9F40', '#C7C7C7', '#536DFE'],
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
                 }]
             };
+            const pendidikanChartEl = document.querySelector("#pendidikanChart");
+            if (pendidikanChartEl) {
+                const pendidikanChart = new ApexCharts(pendidikanChartEl, optionsPendidikan);
+                pendidikanChart.render();
+            } else {
+                console.error("Elemen #pendidikanChart tidak ditemukan!");
+            }
 
-            const dataPekerjaan = {
+
+            // Chart Pekerjaan
+            const optionsPekerjaan = {
+                chart: {
+                    type: 'pie',
+                    height: 350
+                },
                 labels: ['PNS', 'TNI', 'POLRI', 'SWASTA', 'WIRAUSAHA', 'LAINNYA'],
-                datasets: [{
-                    label: 'Jumlah Responden',
-                    data: [
-                        {{ $jumlahPNS ?? 0 }},
-                        {{ $jumlahTNI ?? 0 }},
-                        {{ $jumlahPOLRI ?? 0 }},
-                        {{ $jumlahSwasta ?? 0 }},
-                        {{ $jumlahWirausaha ?? 0 }},
-                        {{ $jumlahLainnyaPekerjaan ?? 0 }}
-                    ], // Data dari controller
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.8)', // Merah
-                        'rgba(54, 162, 235, 0.8)', // Biru
-                        'rgba(255, 205, 86, 0.8)', // Kuning
-                        'rgba(75, 192, 192, 0.8)', // Hijau Teal
-                        'rgba(153, 102, 255, 0.8)', // Ungu
-                        'rgba(201, 203, 207, 0.8)' // Abu-abu kebiruan
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 205, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(201, 203, 207, 1)'
-                    ],
-                    borderWidth: 1
+                series: [jumlahPNS, jumlahTNI, jumlahPOLRI, jumlahSwasta, jumlahWirausaha, jumlahLainnyaPekerjaan],
+                colors: ['#FF6384', '#36A2EB', '#FFCD56', '#4BC0C0', '#9966FF', '#C9CBCE'],
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
                 }]
             };
-
-            // Konfigurasi Chart untuk Jenis Kelamin
-            new Chart(document.getElementById('jenisKelaminChart'), {
-                type: 'pie', // Tipe chart: pie
-                data: dataJenisKelamin,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: false,
-                            text: 'Jenis Kelamin Responden'
-                        }
-                    }
-                },
-            });
-
-            // Konfigurasi Chart untuk Pendidikan
-            new Chart(document.getElementById('pendidikanChart'), {
-                type: 'pie',
-                data: dataPendidikan,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: false,
-                            text: 'Pendidikan Responden'
-                        }
-                    }
-                },
-            });
-
-            // Konfigurasi Chart untuk Pekerjaan
-            new Chart(document.getElementById('pekerjaanChart'), {
-                type: 'pie',
-                data: dataPekerjaan,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: false,
-                            text: 'Pekerjaan Responden'
-                        }
-                    }
-                },
-            });
+            const pekerjaanChartEl = document.querySelector("#pekerjaanChart");
+            if (pekerjaanChartEl) {
+                const pekerjaanChart = new ApexCharts(pekerjaanChartEl, optionsPekerjaan);
+                pekerjaanChart.render();
+            } else {
+                console.error("Elemen #pekerjaanChart tidak ditemukan!");
+            }
         });
     </script>
 @endpush
