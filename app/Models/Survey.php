@@ -15,7 +15,7 @@ class Survey extends Model
         'jenis_kelamin',
         'pendidikan',
         'pekerjaan',
-        'dokumen',
+        'layanan',
         'survey1',
         'survey2',
         'survey3',

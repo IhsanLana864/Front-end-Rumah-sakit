@@ -77,8 +77,14 @@
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         <a href="{{ route('admin.banner.index') }}" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-link"></i></span>
+                            <span class="nxl-micon"><i class="feather-image"></i></span>
                             <span class="nxl-mtext">Banner</span>
+                        </a>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="{{ route('admin.survey.index') }}" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-clipboard"></i></span>
+                            <span class="nxl-mtext">E-Survey</span>
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -184,6 +190,7 @@
     <script src="{{ asset('assets/js/common-init.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard-init.min.js') }}"></script>
     <script src="{{ asset('assets/js/theme-customizer-init.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     @stack('scripts')
     </body>

@@ -73,6 +73,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         Route::resource('facilitie', FacilitieController::class);
         Route::resource('partner', PartnerController::class);
         Route::resource('banner', BannerController::class);
+        Route::resource('survey', SurveyController::class);
     });
 
     // Rute yang HANYA bisa diakses oleh Super Admin
