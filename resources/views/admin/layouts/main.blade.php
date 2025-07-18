@@ -89,14 +89,20 @@
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         <a href="{{ route('admin.company.index') }}" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-clipboard"></i></span>
+                            <span class="nxl-micon"><i class="feather-home"></i></span>
                             <span class="nxl-mtext">Company</span>
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         <a href="{{ route('admin.sosmed.index') }}" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-clipboard"></i></span>
+                            <span class="nxl-micon"><i class="feather-radio"></i></span>
                             <span class="nxl-mtext">Sosial Media</span>
+                        </a>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
+                        <a href="{{ route('admin.berita.index') }}" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-book"></i></span>
+                            <span class="nxl-mtext">Berita</span>
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
