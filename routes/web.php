@@ -48,6 +48,10 @@ Route::view('/e-survey', 'esurvey')->name('esurvey');
 Route::post('/submit-survey', [SurveyController::class, 'submit'])->name('submit.survey');
 Route::view('/kontak', 'kontak')->name('kontak');
 
+Route::get('/detail-berita', function () {
+    return view('detail-berita');
+})->name('detail-berita');
+// Rute untuk halaman detail berita
 // ==============================
 // 📄 Admin Overall
 // ==============================
