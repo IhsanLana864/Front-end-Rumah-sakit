@@ -16,6 +16,8 @@ use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\SosmedController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\InstalasiController;
+use App\Http\Controllers\SubInstalasiController;
 
 // ==============================
 // 🔰 Beranda
@@ -80,6 +82,8 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         Route::resource('company', CompanyController::class);
         Route::resource('sosmed', SosmedController::class);
         Route::resource('berita', BeritaController::class)->parameters(['berita' => 'berita']);
+        Route::resource('instalasi', InstalasiController::class);
+        Route::resource('sub-instalasi', SubInstalasiController::class);
     });
 
     // Rute yang HANYA bisa diakses oleh Super Admin

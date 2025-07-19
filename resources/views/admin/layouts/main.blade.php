@@ -40,6 +40,16 @@
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-home"></i></span>
+                            <span class="nxl-mtext">Company</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.company.index') }}">Profile</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.sosmed.index') }}">Social Media</a></li>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
                         <a href="{{ route('admin.dokter.index') }}" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-user"></i></span>
                             <span class="nxl-mtext">Dokter</span>
@@ -52,22 +62,30 @@
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-home"></i></span>
+                            <span class="nxl-mtext">Instalasi</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.instalasi.index') }}">Instalasi</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.sub-instalasi.index') }}">Sub Instalasi</a></li>
+                        </ul>
+                    </li>
+                    <li class="nxl-item nxl-hasmenu">
                         <a href="{{ route('admin.layanan.index') }}" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-airplay"></i></span>
                             <span class="nxl-mtext">Layanan</span>
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
-                        <a href="{{ route('admin.kegiatan.index') }}" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-archive"></i></span>
-                            <span class="nxl-mtext">Kegiatan</span>
+                        <a href="javascript:void(0);" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-image"></i></span>
+                            <span class="nxl-mtext">Gallery</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
                         </a>
-                    </li>
-                    <li class="nxl-item nxl-hasmenu">
-                        <a href="{{ route('admin.facilitie.index') }}" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-archive"></i></span>
-                            <span class="nxl-mtext">Fasilitas</span>
-                        </a>
+                        <ul class="nxl-submenu">
+                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.kegiatan.index') }}">Kegiatan</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.facilitie.index') }}">Fasilitas</a></li>
+                        </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         <a href="{{ route('admin.partner.index') }}" class="nxl-link">
@@ -85,18 +103,6 @@
                         <a href="{{ route('admin.survey.index') }}" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-clipboard"></i></span>
                             <span class="nxl-mtext">E-Survey</span>
-                        </a>
-                    </li>
-                    <li class="nxl-item nxl-hasmenu">
-                        <a href="{{ route('admin.company.index') }}" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-home"></i></span>
-                            <span class="nxl-mtext">Company</span>
-                        </a>
-                    </li>
-                    <li class="nxl-item nxl-hasmenu">
-                        <a href="{{ route('admin.sosmed.index') }}" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-radio"></i></span>
-                            <span class="nxl-mtext">Sosial Media</span>
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
