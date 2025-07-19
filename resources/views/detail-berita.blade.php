@@ -16,8 +16,8 @@
             </nav>
         </div>
         <div class="title-wrapper">
-            <h1>Peningkatan Fasilitas RSUD Sindangbarang untuk Pelayanan Optimal</h1>
-            <p>Dipublikasikan pada <strong>1 Juli 2024</strong> oleh Humas RSUD Sindangbarang</p>
+            <h1>{{ $berita->judul}}</h1>
+            <p>Dipublikasikan pada <strong>{{ $berita->created_at }}</strong> oleh Humas RSUD Sindangbarang</p>
         </div>
     </div>
 
@@ -26,9 +26,11 @@
 
             <div class="row gy-4">
                 <div class="col-lg-8">
-                    <div class="content">
-                        <img src="{{ asset('assets/img/health/consultation-3.webp') }}" alt="Berita RSUD"
+                    <div class="content" style="white-space: pre-wrap;">
+                        <img src="{{ asset('storage/' . $berita->gambar) }}" alt="Berita RSUD"
                             class="img-fluid rounded mb-4">
+
+                        {{ $berita->detail }}
 
                         <p>
                             RSUD Sindangbarang terus berkomitmen dalam meningkatkan mutu pelayanan kepada masyarakat. Salah

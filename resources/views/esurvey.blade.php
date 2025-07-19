@@ -15,7 +15,7 @@
         </div>
         <div class="title-wrapper">
             <h1>E-Survey</h1>
-            <p>Berpartisipasilah dalam survei kami untuk membantu meningkatkan pelayanan RSUD Sindangbarang demi kenyamanan
+            <p>Berpartisipasilah dalam survei kami untuk membantu meningkatkan pelayanan {{ $company->nama }} demi kenyamanan
                 dan kepuasan Anda.</p>
         </div>
     </div>
@@ -32,12 +32,6 @@
                                     class="img-fluid" style="width: 40px; height: auto;">
                                 <h2 class="section__title mb-0 title-animation">KUESIONER SURVEI KEPUASAN MASYARAKAT (SKM)
                                 </h2>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="pricing-appointment__content-right mt-md-25 mt-sm-25 mt-xs-25">
-                                <p class="mb-0">PADA UNIT LAYANAN UPT PUSKESMAS CIKALONG KABUPATEN TASIKMALAYA</p>
                             </div>
                         </div>
                     </div>

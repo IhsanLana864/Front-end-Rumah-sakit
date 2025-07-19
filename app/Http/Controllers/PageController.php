@@ -7,9 +7,19 @@ use App\Models\Banner;
 use App\Models\Company;
 use App\Models\Dokter;
 use App\Models\Manajerial;
+use App\Models\Sosmed;
+use App\Models\Berita;
 
 class PageController extends Controller
 {
+    //Layout Main
+    public function mainPage()
+    {
+        $company = Company::first();
+        return view('layouts.main', compact('company'));
+    }
+
+    //Beranda
     public function beranda()
     {
         $banners = Banner::first();
@@ -17,6 +27,7 @@ class PageController extends Controller
         return view('index', compact('banners', 'company'));
     }
 
+    //PROFILE
     public function profile()
     {
         $company = Company::first();
@@ -33,5 +44,37 @@ class PageController extends Controller
     {
         $manajerial = Manajerial::all();
         return view('profil.manajemen', compact('manajerial'));
+    }
+
+    //Berita & Artikel
+    public function berita()
+    {
+        $company = Company::first();
+        $sosmeds = Sosmed::all();
+        $beritas = Berita::all();
+        return view('artikel', compact('company', 'sosmeds', 'beritas'));
+    }
+
+    public function detailBerita(Berita $berita)
+    {
+        $company = Company::first();
+        $sosmeds = Sosmed::all();
+        return view('detail-berita', compact('company', 'sosmeds', 'berita'));
+    }
+
+    //E-Survey
+    public function esurvey()
+    {
+        $company = Company::first();
+        $sosmeds = Sosmed::all();
+        return view('esurvey', compact('company', 'sosmeds'));
+    }
+
+    //Kontak
+    public function kontak()
+    {
+        $company = Company::first();
+        $sosmeds = Sosmed::all();
+        return view('kontak', compact('company', 'sosmeds'));
     }
 }

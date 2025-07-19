@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   {{-- Judul halaman akan dinamis, defaultnya adalah RSUD Sindangbarang --}}
-  <title>@yield('title', 'RSUD Sindangbarang - Pelayanan Kesehatan Unggulan')</title>
+  <title>@yield('title', '{{ $company->nama }}')</title>
   <meta name="description" content="Menjadi Rumah Sakit Unggulan yang Mendukung Terwujudnya Masyarakat Cianjur Sehat dan Mandiri">
   <meta name="keywords" content="RSUD, Sindangbarang, Cianjur, Rumah Sakit, Kesehatan">
 
@@ -32,8 +32,8 @@
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
         <a href="{{ route('beranda') }}" class="logo d-flex align-items-center me-auto me-xl-0">
-            <img src="{{ asset('assets/img/logo-rs.svg') }}" alt="RSUD Sindangbarang Logo" class="logo-img">
-            <h1 class="sitename">RSUD Sindangbarang</h1>
+            <img src="{{ asset('storage/' . $company->logo) }}" alt="{{ $company->nama }}" class="logo-img">
+            <h1 class="sitename">{{ $company->nama }}</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
@@ -62,7 +62,7 @@
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-getstarted" href="tel:082130677599">
+        <a class="btn-getstarted" href="tel:{{$company->kontak}}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="16" height="16" viewBox="0 0 16 16" style="margin-right: 8px">
                 <path d="M3.654 1.328a.678.678 0 0 1 1.015-.063l2.29 2.29c.329.329.445.82.3 1.25l-.547 1.64a.678.678 0 0 0 .167.678l2.457 2.457a.678.678 0 0 0 .678.167l1.64-.547c.43-.145.921-.03 1.25.3l2.29 2.29a.678.678 0 0 1-.063 1.015l-2.012 2.012a1.745 1.745 0 0 1-1.872.395c-2.084-.83-4.06-2.278-5.927-4.145C2.373 8.18.924 6.204.095 4.12A1.745 1.745 0 0 1 .49 2.248L2.502.236z"/>
             </svg>
@@ -80,13 +80,12 @@
         <div class="row gy-4">
             <div class="col-lg-4 col-md-6 footer-about">
                 <a href="{{ route('beranda') }}" class="logo d-flex align-items-center">
-                    <span class="sitename">RSUD Sindangbarang</span>
+                    <span class="sitename">{{$company->nama}}</span>
                 </a>
                 <div class="footer-contact pt-3">
-                    <p>Jl. Raya Sindangbarang-Cidaun KM.01</p>
-                    <p>Saganten, Kec. Sindangbarang, Cianjur 43272</p>
-                    <p class="mt-3"><strong>Telepon:</strong> <span>0821-3067-7599</span></p>
-                    <p><strong>Email:</strong> <span>info@rsudsindangbarang.com</span></p>
+                    <p>{{ $company->alamat }}</p>
+                    <p class="mt-3"><strong>Telepon:</strong> <span>{{ implode('-', str_split($company->kontak, 4)) }}</span></p>
+                    <p><strong>Email:</strong> <span>{{ $company->email }}</span></p>
                 </div>
                 <div class="social-links d-flex mt-4">
                     <a href="https://www.facebook.com/rsud.sindangbarang" target="_blank"><i class="bi bi-facebook"></i></a>
@@ -122,7 +121,7 @@
         </div>
     </div>
     <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">RSUD Sindangbarang</strong> <span>All Rights Reserved</span></p>
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">{{ $company->nama }}</strong> <span>All Rights Reserved</span></p>
     </div>
 </footer>
 

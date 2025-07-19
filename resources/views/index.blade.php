@@ -23,12 +23,17 @@
                         <div class="row">
                             <div class="col-lg-7 col-md-10" data-aos="fade-right" data-aos-delay="100">
                                 <div class="content-box">
-                                    <span class="badge-accent" data-aos="fade-up" data-aos-delay="150">Kepuasan Anda Tujuan
-                                        Kami</span>
-                                    <h1 data-aos="fade-up" data-aos-delay="200">
-                                        Menjadi Rumah Sakit Unggulan yang Mendukung Terwujudnya
-                                        Masyarakat Cianjur Sehat dan Mandiri
-                                    </h1>
+                                    @if ($company->motto)
+                                        <span class="badge-accent" data-aos="fade-up" data-aos-delay="150">{{ $company->motto }}</span>
+                                    @else
+                                        <span class="badge-accent" data-aos="fade-up" data-aos-delay="150">Motto</span>
+                                    @endif
+
+                                    @if ($company->motto)
+                                        <h1 data-aos="fade-up" data-aos-delay="200">{{ $company->visi }}</h1>
+                                    @else
+                                        <h1 data-aos="fade-up" data-aos-delay="200">Menjadi Rumah Sakit Unggulan yang Mendukung Terwujudnya Masyarakat Cianjur Sehat dan Mandiri</h1>
+                                    @endif
                                     <p data-aos="fade-up" data-aos-delay="250">
                                         Memberikan pelayanan kesehatan Humanis dan Paripurna
                                         serta membina jaringan kemitraan dan rujukan guna
@@ -46,8 +51,8 @@
                                             <i class="bi bi-telephone-fill"></i>
                                             <div class="badge-content">
                                                 <span>Hotline IGD 24 Jam</span>
-                                                @if ($banners->gambar)
-                                                    <strong>0821-3067-7599</strong>
+                                                @if ($company->kontak)
+                                                    <strong>{{ implode('-', str_split($company->kontak, 4)) }}</strong>
                                                 @else
                                                     <strong>TBA</strong>
                                                 @endif

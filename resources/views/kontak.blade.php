@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Kontak Kami - RSUD Sindangbarang')
+@section('title', 'Kontak Kami - {{ $company->nama }}')
 @section('body-class', 'contact-page')
 
 @section('content')
@@ -32,7 +32,7 @@
                     <div class="contact-info-header">
                         <h3>Informasi Kontak</h3>
                         <p>
-                            Berikut adalah detail kontak dan alamat RSUD Sindangbarang
+                            Berikut adalah detail kontak dan alamat {{ $company->nama }}
                             yang dapat Anda hubungi.
                         </p>
                     </div>
@@ -44,7 +44,11 @@
                             </div>
                             <div class="card-content">
                                 <h4>Alamat Kami</h4>
-                                <p>Jl. Raya Sindangbarang-Cidaun KM.01, Cianjur 43272</p>
+                                @if ($company->alamat)
+                                    <p>{{ $company->alamat }}</p>
+                                @else
+                                    <p>TBA</p>
+                                @endif
                             </div>
                         </div>
 
@@ -54,7 +58,11 @@
                             </div>
                             <div class="card-content">
                                 <h4>Email Kami</h4>
-                                <p>kontak@rsudsindangbarang.com</p>
+                                @if ($company->email)
+                                    <p>{{ $company->email }}</p>
+                                @else
+                                    <p>TBA</p>
+                                @endif
                             </div>
                         </div>
 
@@ -64,7 +72,11 @@
                             </div>
                             <div class="card-content">
                                 <h4>Telepon (Hotline)</h4>
-                                <p>0821-3067-7599</p>
+                                @if ($company->kontak)
+                                    <p>{{ implode('-', str_split($company->kontak, 4)) }}</p>
+                                @else
+                                    <p>TBA</p>
+                                @endif
                             </div>
                         </div>
 
@@ -99,8 +111,12 @@
                 <div class="contact-form-panel">
                     <div class="map-container" style="width: 100%; height: 400px; border-radius: 8px; overflow: hidden;">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.776352945151!2d106.91187731526685!3d-7.918432881010376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e82b73714e6f%3A0x6d9f5a7788484e55!2sRSUD%20Sindangbarang!5e0!3m2!1sen!2sid!4v1672233445566!5m2!1sen!2sid"
-                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            src="https://maps.google.com/maps?q={{ $company->long }},{{ $company->lat }}&z=15&output=embed"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>

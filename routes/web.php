@@ -46,14 +46,12 @@ Route::prefix('profil')->name('profil.')->group(function () {
 // 📄 Halaman Tunggal
 // ==============================
 Route::view('/kegiatan', 'kegiatan')->name('kegiatan');
-Route::view('/artikel', 'artikel')->name('artikel');
-Route::view('/e-survey', 'esurvey')->name('esurvey');
+Route::get('/artikel', [PageController::class, 'berita'])->name('artikel');
+Route::get('/e-survey', [PageController::class, 'esurvey'])->name('esurvey');
 Route::post('/submit-survey', [SurveyController::class, 'submit'])->name('submit.survey');
-Route::view('/kontak', 'kontak')->name('kontak');
+Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
 
-Route::get('/detail-berita', function () {
-    return view('detail-berita');
-})->name('detail-berita');
+Route::get('/detail-berita', [PageController::class, 'detailBerita'])->name('detail-berita');
 // Rute untuk halaman detail berita
 // ==============================
 // 📄 Admin Overall
