@@ -61,6 +61,16 @@
                                     <img id="foto_berita_preview" src="#" alt="Preview Gambar" style="max-width: 300px; height: auto; border: 1px solid #ddd; padding: 5px;">
                                 </div>
                             </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Kategori <span class="text-danger">*</span></label>
+                                <select class="form-control mb-2" name="kategori" required>
+                                    <option selected disable>Pilih Kategori</option>
+                                    <option value="berita">Berita</option>
+                                    <option value="artikel">Artikel</option>
+                                </select>
+                            </div>
+
                             <div class="col-12 mb-4">
                                 <label class="form-label">Judul <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control mb-2" name="judul" required placeholder="Judul berita">

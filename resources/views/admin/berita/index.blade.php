@@ -47,6 +47,7 @@
                                         <th>No</th>
                                         <th>Gambar</th>
                                         <th>Judul</th>
+                                        <th>Kategori</th>
                                         <th class="text-end">Actions</th>
                                     </tr>
                                 </thead>
@@ -58,6 +59,7 @@
                                                 <img src="{{ asset('storage/' . $berita->gambar) }}" alt="Foto" width="50" height="50" style="border-radius: 10px;">
                                             </td>
                                             <td>{{ $berita->judul }}</td>
+                                            <td>{{ $berita->kategori }}</td>
                                             <td>
                                                 <div class="hstack gap-2 justify-content-end">
                                                     <a href="{{ route('admin.berita.show', $berita->id) }}" class="avatar-text avatar-md">

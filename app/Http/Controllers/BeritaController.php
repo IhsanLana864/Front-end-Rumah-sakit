@@ -30,6 +30,7 @@ class BeritaController extends Controller
             'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'judul' => 'required|string|max:255',
             'detail' => 'required|string',
+            'kategori' => 'required|string|max:255',
         ]);
 
         $fotoPath = null;
@@ -42,6 +43,7 @@ class BeritaController extends Controller
             'gambar' => $fotoPath,
             'judul' => $request->judul,
             'detail' => $request->detail,
+            'kategori' => $request->kategori,
         ]);
 
         return redirect()->route('admin.berita.index')->with('success', 'Data berhasil ditambah');
@@ -59,6 +61,7 @@ class BeritaController extends Controller
             'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'judul' => 'required|string|max:255',
             'detail' => 'required|string',
+            'kategori' => 'required|string|max:255',
         ]);
 
         $imagePath = $berita->gambar;

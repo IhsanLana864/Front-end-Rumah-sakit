@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('gambar');
             $table->string('judul');
             $table->longText('detail');
+            $table->string('kategori');
             $table->timestamps();
         });
     }

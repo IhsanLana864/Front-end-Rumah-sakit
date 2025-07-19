@@ -63,6 +63,21 @@
                                     <img id="foto_berita_preview" src="{{ $berita->gambar ? asset('storage/' . $berita->gambar) : '#' }}" alt="Preview Gambar" style="max-width: 300px; height: auto; border: 1px solid #ddd; padding: 5px;">
                                 </div>
                             </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Kategori <span class="text-danger">*</span></label>
+                                <select class="form-control mb-2" name="kategori" required>
+                                    {{-- Opsi placeholder, disarankan pakai `hidden` agar tidak bisa dipilih lagi setelah dipilih --}}
+                                    <option value="" disabled {{ old('kategori', $berita->kategori ?? '') == '' ? 'selected' : '' }}>Pilih Kategori</option>
+                                    
+                                    <option value="berita" {{ old('kategori', $berita->kategori ?? '') == 'berita' ? 'selected' : '' }}>Berita</option>
+                                    <option value="artikel" {{ old('kategori', $berita->kategori ?? '') == 'artikel' ? 'selected' : '' }}>Artikel</option>
+                                </select>
+                                @error('kategori')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <div class="col-12 mb-4">
                                 <label class="form-label">Judul <span class="text-danger">*</span></label>
                                 {{-- Menggunakan old() untuk data yang dikirim ulang (jika ada error) atau data dari $berita --}}

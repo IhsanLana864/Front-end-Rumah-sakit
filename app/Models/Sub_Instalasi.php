@@ -14,6 +14,8 @@ class Sub_Instalasi extends Model
     protected $fillable = [
         'instalasi_id',
         'nama_sub',
+        'keterangan',
+        'logo',
     ];
 
     /**

@@ -47,6 +47,8 @@
                                         <th>No</th>
                                         <th>Nama Instalasi</th>
                                         <th>Sub Instalasi</th>
+                                        <th>Keterangan</th>
+                                        <th>Logo</th>
                                         <th class="text-end">Actions</th>
                                     </tr>
                                 </thead>
@@ -56,6 +58,10 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $subInstalasi->instalasi->nama_instalasi ?? 'N/A' }}</td>
                                             <td>{{ $subInstalasi->nama_sub }}</td>
+                                            <td>{{ $subInstalasi->keterangan }}</td>
+                                            <td>
+                                                <img src="{{ asset('storage/' . $subInstalasi->logo) }}" alt="Logo" width="50" height="50" style="border-radius: 10px;">
+                                            </td>
                                             <td>
                                                 <div class="hstack gap-2 justify-content-end">
                                                     <a href="{{ route('admin.sub-instalasi.edit', $subInstalasi->id) }}" class="avatar-text avatar-md">

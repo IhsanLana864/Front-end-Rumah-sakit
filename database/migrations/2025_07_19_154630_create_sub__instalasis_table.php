@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('instalasi_id')->constrained('instalasis')->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama_sub');
+            $table->string('keterangan');
+            $table->string('logo');
             $table->timestamps();
         });
     }

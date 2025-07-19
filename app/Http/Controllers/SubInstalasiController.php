@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sub_Instalasi;
 use App\Models\Instalasi;
+use Illuminate\Support\Facades\Storage;
 
 class SubInstalasiController extends Controller
 {
@@ -22,12 +23,25 @@ class SubInstalasiController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'instalasi_id' => 'required|exists:instalasis,id',
             'nama_sub' => 'required|string|max:255',
+            'keterangan' => 'required|string|max:255',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        Sub_Instalasi::create($validatedData);
+        $fotoPath = null;
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $fotoPath = $file->store('instalasi', 'public'); 
+        }
+
+        Sub_Instalasi::create([
+            'instalasi_id' => $request->instalasi_id,
+            'nama_sub' => $request->nama_sub,
+            'keterangan' => $request->keterangan,
+            'logo' => $fotoPath,
+        ]);
 
         return redirect()->route('admin.sub-instalasi.index')->with('success', 'Sub Instalasi berhasil ditambahkan!');
     }
@@ -43,15 +57,34 @@ class SubInstalasiController extends Controller
         $validatedData = $request->validate([
             'instalasi_id' => 'required|exists:instalasis,id',
             'nama_sub' => 'required|string|max:255',
+            'keterangan' => 'required|string|max:255',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $subInstalasi->update($validatedData);
+        $imagePath = $subInstalasi->logo;
+
+        if ($request->hasFile('logo')) {
+            if ($subInstalasi->logo) {
+                Storage::disk('public')->delete($subInstalasi->logo);
+            }
+            $imagePath = $request->file('logo')->store('instalasi', 'public');
+        }
+
+        $dataToUpdate = $validatedData;
+
+        $dataToUpdate['logo'] = $imagePath;
+
+        $subInstalasi->update($dataToUpdate);
 
         return redirect()->route('admin.sub-instalasi.index')->with('success', 'Sub Instalasi berhasil diperbarui!');
     }
 
     public function destroy(Sub_Instalasi $subInstalasi)
     {
+        if ($subInstalasi->logo) { 
+            Storage::disk('public')->delete($subInstalasi->logo);
+        }
+
         $subInstalasi->delete();
         return redirect()->route('admin.sub-instalasi.index')->with('success', 'Sub Instalasi berhasil dihapus!');
     }
