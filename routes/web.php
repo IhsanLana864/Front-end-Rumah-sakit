@@ -18,11 +18,12 @@ use App\Http\Controllers\SosmedController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\InstalasiController;
 use App\Http\Controllers\SubInstalasiController;
+use App\Http\Controllers\PageController;
 
 // ==============================
 // 🔰 Beranda
 // ==============================
-Route::view('/', 'index')->name('beranda');
+Route::get('/', [PageController::class, 'beranda'])->name('beranda');
 
 // ==============================
 // 📂 Layanan & Fasilitas
@@ -36,9 +37,9 @@ Route::prefix('layanan-fasilitas')->name('layanan.')->group(function () {
 // 📂 Profil RS
 // ==============================
 Route::prefix('profil')->name('profil.')->group(function () {
-    Route::view('/tentang-kami', 'profil.tentang-kami')->name('tentang-kami'); // /profil/tentang-kami
-    Route::view('/manajemen', 'profil.manajemen')->name('manajemen');         // /profil/manajemen
-    Route::view('/dokter', 'profil.dokter')->name('dokter');                 // /profil/dokter
+    Route::get('/tentang-kami', [PageController::class, 'profile'])->name('tentang-kami'); // /profil/tentang-kami
+    Route::view('/manajemen', [PageController::class, 'manajerial'])->name('manajemen');         // /profil/manajemen
+    Route::view('/dokter', [PageController::class, 'dokter'])->name('dokter');                 // /profil/dokter
 });
 
 // ==============================

@@ -22,7 +22,7 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
             'keterangan' => 'nullable|string|max:255'
         ]);
 
@@ -49,7 +49,7 @@ class BannerController extends Controller
     {
         // Validasi data input
         $validatedData = $request->validate([
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
             'keterangan' => 'nullable|string|max:255'
         ]);
 

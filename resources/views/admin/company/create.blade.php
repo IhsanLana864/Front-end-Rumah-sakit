@@ -50,7 +50,7 @@
 
                             <div class="col-12 mb-4">
                                 <label class="form-label">Nama <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control mb-2" name="nama" required placeholder="Nama dokter">
+                                <input type="text" class="form-control mb-2" name="nama" required placeholder="Nama company">
                             </div>
 
                             <div class="col-12 mb-4">

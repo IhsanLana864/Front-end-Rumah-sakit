@@ -9,7 +9,13 @@
         <div class="container-fluid p-0">
             <div class="hero-wrapper">
                 <div class="hero-image">
-                    <img src="{{ asset('assets/img/health/showcase-1.webp') }}" alt="Advanced Healthcare" class="img-fluid" />
+                @if ($banners->gambar)
+                    <img src="{{ asset('storage/' . $banners->gambar) }}" alt="{{ $banners->keterangan }}" class="img-fluid" />
+                @else
+                    <div class="bg-light p-4 rounded mb-3">
+                        <p class="text-muted">Tidak ada gambar untuk banner ini.</p>
+                    </div>
+                @endif
                 </div>
 
                 <div class="hero-content">
@@ -40,7 +46,11 @@
                                             <i class="bi bi-telephone-fill"></i>
                                             <div class="badge-content">
                                                 <span>Hotline IGD 24 Jam</span>
-                                                <strong>0821-3067-7599</strong>
+                                                @if ($banners->gambar)
+                                                    <strong>0821-3067-7599</strong>
+                                                @else
+                                                    <strong>TBA</strong>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="badge-item">

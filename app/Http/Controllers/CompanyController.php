@@ -21,9 +21,32 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
+        // 1. Validasi Data
         $request->validate([
             'nama' => 'required|string|max:255',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            // --- MODIFIKASI VALIDASI UNTUK 'LOGO' ---
+            'logo' => [
+                'required', // Tetap required jika logo wajib ada saat membuat Company baru
+                // Atau 'nullable' jika logo opsional: 'logo' => ['nullable', 'file', ...]
+                'file', // Memastikan bahwa ini adalah file yang di-upload
+                'mimes:jpeg,png,jpg,gif,svg', // Mengizinkan format-format ini
+                'max:2048', // Ukuran maksimal 2MB
+                function ($attribute, $value, $fail) {
+                    // Cek jika file adalah SVG atau jika MIME type-nya adalah image/svg+xml
+                    // Untuk SVG, kita tidak perlu validasi 'image' bawaan PHP yang mungkin gagal
+                    if ($value->getClientOriginalExtension() === 'svg' || $value->getMimeType() === 'image/svg+xml') {
+                        return; // Lolos untuk SVG, karena sudah divalidasi oleh 'file' dan 'mimes'
+                    }
+
+                    // Untuk format gambar lain (jpeg, png, gif, jpg), kita tetap ingin memastikan itu adalah gambar valid.
+                    // Gunakan validator internal untuk menerapkan aturan 'image' hanya pada non-SVG.
+                    $validator = validator(['temp_image' => $value], ['temp_image' => 'image']);
+                    if ($validator->fails()) {
+                        $fail("The {$attribute} field must be a valid image (non-SVG type failed image check).");
+                    }
+                }
+            ],
+            // --- AKHIR MODIFIKASI VALIDASI 'LOGO' ---
             'alamat' => 'required|string',
             'long' => 'required|string|max:255',
             'lat' => 'required|string|max:255',
@@ -36,27 +59,23 @@ class CompanyController extends Controller
             'email' => 'required|string|max:255',
         ]);
 
+        // 2. Proses Upload Logo
         $fotoPath = null;
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
-            $fotoPath = $file->store('company', 'public'); 
+            // Simpan file ke storage/app/public/company (sesuai 'company' disk public)
+            $fotoPath = $file->store('company', 'public');
         }
 
-        Company::create([
-            'nama' => $request->nama,
-            'logo' => $fotoPath,
-            'alamat' => $request->alamat,
-            'long' => $request->long,
-            'lat' => $request->lat,
-            'falsafah' => $request->falsafah,
-            'visi' => $request->visi,
-            'misi' => $request->misi,
-            'motto' => $request->motto,
-            'budaya_kerja' => $request->budaya_kerja,
-            'kontak' => $request->kontak,
-            'email' => $request->email
-        ]);
+        // 3. Siapkan Data untuk Disimpan ke Database
+        // Ambil semua data yang sudah divalidasi
+        $dataToStore = $request->except('logo'); // Ambil semua data kecuali 'logo' karena itu file
+        $dataToStore['logo'] = $fotoPath; // Tambahkan path logo yang sudah di-upload
 
+        // 4. Buat Record Baru
+        Company::create($dataToStore); // Pastikan model Company memiliki $fillable yang sesuai
+
+        // 5. Redirect kembali dengan pesan sukses
         return redirect()->route('admin.company.index')->with('success', 'Data berhasil ditambah');
     }
 
