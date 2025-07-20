@@ -41,7 +41,7 @@
                                     </p>
 
                                     <div class="cta-group" data-aos="fade-up" data-aos-delay="300">
-                                        <a href="#" class="btn btn-primary">Buat Janji</a>
+                                        <a href="https://api.whatsapp.com/send/?phone=6282130677599&text&type=phone_number&app_absent=0" class="btn btn-primary">Buat Janji</a>
                                         <a href="{{ route('layanan.layanan') }}" class="btn btn-outline">Lihat Pelayanan
                                             Kami</a>
                                     </div>
@@ -181,7 +181,7 @@
                         </div>
 
                         <div class="cta-wrapper mt-4">
-                            <a href="{{ route('profil.tentang-kami') }}" class="btn btn-primary">Profil Lengkap</a>
+                            <a href="" class="btn btn-primary">Profil Lengkap</a>
                             <a href="{{ route('profil.dokter') }}" class="btn btn-outline">Temui Tim Kami</a>
                         </div>
                     </div>
@@ -199,138 +199,29 @@
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row gy-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="department-card">
-                        <div class="department-image">
-                            <img src="{{ asset('assets/img/health/cardiology-3.webp') }}" alt="Cardiology Department"
-                                class="img-fluid" />
-                        </div>
-                        <div class="department-content">
-                            <div class="department-icon">
-                                <i class="fas fa-heartbeat"></i>
+                @forelse ($Sub_Instalasis as $Sub_Instalasi)
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="department-card">
+                            <div class="department-image">
+                                <img src="{{ asset('storage/' . $Sub_Instalasi->logo) }}" alt="Cardiology Department"
+                                    class="img-fluid" />
                             </div>
-                            <h3>Poliklinik Penyakit Dalam</h3>
-                            <p>
-                                Pelayanan untuk diagnosis dan penanganan berbagai penyakit
-                                organ dalam tanpa bedah.
-                            </p>
-                            <a href="#" class="btn-learn-more">
-                                <span>Selengkapnya</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+                            <div class="department-content">
+                                <div class="department-icon">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <h3>{{ $Sub_Instalasi->nama_sub }}</h3>
+                                <p>
+                                    {{ $Sub_Instalasi->keterangan ?? 'Deskripsi layanan belum tersedia.' }}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="department-card">
-                        <div class="department-image">
-                            <img src="{{ asset('assets/img/health/neurology-2.webp') }}" alt="Neurology Department"
-                                class="img-fluid" />
-                        </div>
-                        <div class="department-content">
-                            <div class="department-icon">
-                                <i class="fas fa-stethoscope"></i>
-                            </div>
-                            <h3>Poliklinik Bedah</h3>
-                            <p>
-                                Menangani kasus-kasus yang memerlukan tindakan pembedahan
-                                oleh dokter spesialis.
-                            </p>
-                            <a href="#" class="btn-learn-more">
-                                <span>Selengkapnya</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
+                @empty
+                    <div class="col-12 text-center py-5">
+                        <p>Tidak ada instalasi yang tersedia.</p>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="department-card">
-                        <div class="department-image">
-                            <img src="{{ asset('assets/img/health/orthopedics-4.webp') }}" alt="Orthopedics Department"
-                                class="img-fluid" />
-                        </div>
-                        <div class="department-content">
-                            <div class="department-icon">
-                                <i class="fas fa-female"></i>
-                            </div>
-                            <h3>Poliklinik Obstetri & Ginekologi</h3>
-                            <p>
-                                Layanan kesehatan komprehensif untuk kehamilan, persalinan,
-                                dan kesehatan reproduksi wanita.
-                            </p>
-                            <a href="#" class="btn-learn-more">
-                                <span>Selengkapnya</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="department-card">
-                        <div class="department-image">
-                            <img src="{{ asset('assets/img/health/pediatrics-3.webp') }}" alt="Pediatrics Department"
-                                class="img-fluid" />
-                        </div>
-                        <div class="department-content">
-                            <div class="department-icon">
-                                <i class="fas fa-baby"></i>
-                            </div>
-                            <h3>Instalasi Rawat Inap Anak</h3>
-                            <p>
-                                Perawatan intensif dan nyaman bagi pasien anak-anak yang
-                                memerlukan rawat inap.
-                            </p>
-                            <a href="#" class="btn-learn-more">
-                                <span>Selengkapnya</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="department-card">
-                        <div class="department-image">
-                            <img src="{{ asset('assets/img/health/oncology-4.webp') }}" alt="Oncology Department"
-                                class="img-fluid" />
-                        </div>
-                        <div class="department-content">
-                            <div class="department-icon">
-                                <i class="fas fa-tooth"></i>
-                            </div>
-                            <h3>Poliklinik Kesehatan Gigi & Mulut</h3>
-                            <p>
-                                Pelayanan kesehatan gigi dan mulut, mulai dari pemeriksaan
-                                hingga tindakan medis.
-                            </p>
-                            <a href="#" class="btn-learn-more">
-                                <span>Selengkapnya</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="department-card">
-                        <div class="department-image">
-                            <img src="{{ asset('assets/img/health/emergency-2.webp') }}" alt="Emergency Department"
-                                class="img-fluid" />
-                        </div>
-                        <div class="department-content">
-                            <div class="department-icon">
-                                <i class="fas fa-ambulance"></i>
-                            </div>
-                            <h3>Gawat Darurat 24 Jam</h3>
-                            <p>
-                                Siap melayani kasus gawat darurat umum dan kebidanan selama
-                                24 jam penuh.
-                            </p>
-                            <a href="#" class="btn-learn-more">
-                                <span>Selengkapnya</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>
@@ -343,12 +234,12 @@
             </p>
         </div>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <!-- <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
                 <div class="col-lg-12">
                     <div class="search-container">
                         <form class="search-form" action="#" method="get">
                             <div class="row g-3">
-                                <div class="col-md-4">
+                                <div class="col-md-8">
                                     <input type="text" class="form-control" name="doctor_name"
                                         placeholder="Cari nama dokter" />
                                 </div>
@@ -372,107 +263,31 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="row" data-aos="fade-up" data-aos-delay="400">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="doctor-card">
-                        <div class="doctor-image">
-                            <img src="{{ asset('assets/img/health/staff-3.webp') }}" alt="dr.M.Lucky N Prameswara,Sp.PD"
-                                class="img-fluid" />
-                        </div>
-                        <div class="doctor-info">
-                            <h5>dr. M. Lucky N Prameswara, Sp.PD</h5>
-                            <p class="specialty">Dokter Spesialis Penyakit Dalam</p>
-                            <div class="appointment-actions">
-                                <a href="#" class="btn btn-outline-primary btn-sm">Lihat Profil</a>
-                                <a href="#" class="btn btn-primary btn-sm">Buat Janji</a>
+                @forelse ($dokters as $dokter)
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="doctor-card">
+                            <div class="doctor-image">
+                                <img src="{{ asset('storage/' . $dokter->foto) }}" alt="dr.M.Lucky N Prameswara,Sp.PD"
+                                    class="img-fluid" />
+                            </div>
+                            <div class="doctor-info">
+                                <h5>{{ $dokter->nama }}</h5>
+                                <p class="specialty">{{ $dokter->spesifikasi }}</p>
+                                <div class="appointment-actions">
+                                    <!-- <a href="" class="btn btn-outline-primary btn-sm">Lihat Profil</a> -->
+                                    <a href="https://api.whatsapp.com/send/?phone=6282130677599&text&type=phone_number&app_absent=0" class="btn btn-primary btn-sm">Buat Janji</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="doctor-card">
-                        <div class="doctor-image">
-                            <img src="{{ asset('assets/img/health/staff-7.webp') }}" alt="dr.Teguh Karyadi, Sp.B"
-                                class="img-fluid" />
-                        </div>
-                        <div class="doctor-info">
-                            <h5>dr. Teguh Karyadi, Sp.B</h5>
-                            <p class="specialty">Dokter Spesialis Bedah</p>
-                            <div class="appointment-actions">
-                                <a href="#" class="btn btn-outline-primary btn-sm">Lihat Profil</a>
-                                <a href="#" class="btn btn-primary btn-sm">Buat Janji</a>
-                            </div>
-                        </div>
+                @empty
+                    <div class="text-center">
+                        <span>Belum ada dokter yang terdaftar.</span>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="doctor-card">
-                        <div class="doctor-image">
-                            <img src="{{ asset('assets/img/health/staff-1.webp') }}" alt="dr.Tendi Robby Setia, Sp.OG"
-                                class="img-fluid" />
-                        </div>
-                        <div class="doctor-info">
-                            <h5>dr. Tendi Robby Setia, Sp.OG</h5>
-                            <p class="specialty">
-                                Dokter Spesialis Obstetri dan Ginekologi
-                            </p>
-                            <div class="appointment-actions">
-                                <a href="#" class="btn btn-outline-primary btn-sm">Lihat Profil</a>
-                                <a href="#" class="btn btn-primary btn-sm">Buat Janji</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="doctor-card">
-                        <div class="doctor-image">
-                            <img src="{{ asset('assets/img/health/staff-9.webp') }}"
-                                alt="dr. Azka Putra Rakhmatullah, Sp.An" class="img-fluid" />
-                        </div>
-                        <div class="doctor-info">
-                            <h5>dr. Azka Putra Rakhmatullah, Sp.An</h5>
-                            <p class="specialty">Dokter Spesialis Anestesi</p>
-                            <div class="appointment-actions">
-                                <a href="#" class="btn btn-outline-primary btn-sm">Lihat Profil</a>
-                                <a href="#" class="btn btn-primary btn-sm">Buat Janji</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="doctor-card">
-                        <div class="doctor-image">
-                            <img src="{{ asset('assets/img/health/staff-5.webp') }}" alt="drg. Ridho Akhri Prianto"
-                                class="img-fluid" />
-                        </div>
-                        <div class="doctor-info">
-                            <h5>drg. Ridho Akhri Prianto</h5>
-                            <p class="specialty">Dokter Gigi</p>
-                            <div class="appointment-actions">
-                                <a href="#" class="btn btn-outline-primary btn-sm">Lihat Profil</a>
-                                <a href="#" class="btn btn-primary btn-sm">Buat Janji</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="doctor-card">
-                        <div class="doctor-image">
-                            <img src="{{ asset('assets/img/health/staff-12.webp') }}" alt="dr.Fasya Sophia Septiavina"
-                                class="img-fluid" />
-                        </div>
-                        <div class="doctor-info">
-                            <h5>dr. Fasya Sophia Septiavina</h5>
-                            <p class="specialty">Dokter Umum</p>
-                            <div class="appointment-actions">
-                                <a href="#" class="btn btn-outline-primary btn-sm">Lihat Profil</a>
-                                <a href="#" class="btn btn-primary btn-sm">Buat Janji</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>
@@ -490,7 +305,7 @@
                     </p>
                     <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
                         <a href="#" class="btn-primary">Buat Janji Temu</a>
-                        <a href="{{ route('profil.dokter') }}" class="btn-secondary">Cari Dokter</a>
+                        <a href="" class="btn-secondary">Cari Dokter</a>
                     </div>
                 </div>
             </div>

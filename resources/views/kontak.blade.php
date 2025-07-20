@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Kontak Kami - {{ $company->nama }}')
+@section('title', 'Kontak Kami - RSUD Sindangbarang')
 @section('body-class', 'contact-page')
 
 @section('content')

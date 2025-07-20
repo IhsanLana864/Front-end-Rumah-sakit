@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Sub_Instalasi;
 
 class Instalasi extends Model
 {
@@ -15,6 +16,6 @@ class Instalasi extends Model
 
     public function subInstalasis()
     {
-        return $this->hasMany(SubInstalasi::class, 'instalasi_id', 'id');
+        return $this->hasMany(Sub_Instalasi::class, 'instalasi_id', 'id');
     }
 }

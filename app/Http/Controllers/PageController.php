@@ -14,6 +14,7 @@ use App\Models\Kegiatan;
 use App\Models\Layanan;
 use App\Models\Instalasi;
 use App\Models\Sub_Instalasi;
+use App\Models\Facilitie;
 
 class PageController extends Controller
 {
@@ -29,7 +30,9 @@ class PageController extends Controller
     {
         $banners = Banner::first();
         $company = Company::first();
-        return view('index', compact('banners', 'company'));
+        $dokters = Dokter::limit(6)->get();
+        $Sub_Instalasis = Sub_Instalasi::limit(6)->get();
+        return view('index', compact('banners', 'company', 'dokters','Sub_Instalasis'));
     }
 
     //Layanan & Fasilitas
@@ -37,15 +40,16 @@ class PageController extends Controller
     {
         $company = Company::first();
         $layanans = Layanan::all();
-        $instalasis = Instalasi::all();
+        $instalasis = Instalasi::with('subInstalasis')->get();
         return view('layanan-fasilitas.layanan', compact('company', 'layanans', 'instalasis'));
     }
 
     public function fasilitas()
     {
         $company = Company::first();
+        $facilities = Facilitie::all();
 
-        return view('layanan-fasilitas.fasilitas', compact('company'));
+        return view('layanan-fasilitas.fasilitas', compact('company', 'facilities'));
     }
 
     //Kegiatan
