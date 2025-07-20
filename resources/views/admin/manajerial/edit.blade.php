@@ -44,13 +44,36 @@
         <div class="row">
             <div class="card stretch stretch-full">
                 <div class="card-body">
-                    <form action="{{ route('admin.manajerial.update', $manajerial->id) }}" method="POST">
+                    <form action="{{ route('admin.manajerial.update', $manajerial->id) }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     @method('PUT')
                         <div class="row">
                             <div class="col-12 mb-4">
+                                <label class="form-label">Foto Manajerial</label>
+                                <input type="file" class="form-control mb-2" id="foto_manajerial_input" name="foto" accept="image/*">
+                                @error('foto')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                                <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah foto. Maksimal 2MB, format JPG, PNG, GIF</small>
+
+                                {{-- Tempat untuk preview foto --}}
+                                <div class="mt-3" id="foto_manajerial_preview_container" style="display: none;">
+                                    <p>Preview Foto:</p>
+                                    <img id="foto_manajerial_preview" src="#" alt="Preview Foto" style="max-width: 300px; height: auto; border: 1px solid #ddd; padding: 5px;">
+                                </div>
+
+                                {{-- Tampilkan foto yang sudah ada jika ada --}}
+                                @if ($manajerial->foto)
+                                    <div class="mt-3" id="current_foto_container">
+                                        <p>Foto Saat Ini:</p>
+                                        <img src="{{ asset('storage/' . $manajerial->foto) }}" alt="Foto Kegiatan Saat Ini" style="max-width: 300px; height: auto; border: 1px solid #ddd; padding: 5px;">
+                                    </div>
+                                @endif
+                            </div>
+
+                            <div class="col-12 mb-4">
                                 <label class="form-label">Nama <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control mb-2" name="nama" required placeholder="Nama dokter" value="{{ old('nama', $manajerial->nama) }}">
+                                <input type="text" class="form-control mb-2" name="nama" required placeholder="Nama manajerial" value="{{ old('nama', $manajerial->nama) }}">
                             </div>
 
                             <div class="col-12 mb-4">
@@ -70,3 +93,61 @@
         </div>
     <div>
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        const gambarInput = $('#foto_manajerial_input');
+        const gambarPreview = $('#foto_manajerial_preview');
+        const previewContainer = $('#foto_manajerial_preview_container');
+        const currentGambarContainer = $('#current_foto_container'); // Untuk gambar lama
+
+        // Fungsi untuk menampilkan preview gambar
+        function showImagePreview(src) {
+            gambarPreview.attr('src', src);
+            previewContainer.show();
+            currentGambarContainer.hide(); // Sembunyikan gambar lama jika ada preview baru
+        }
+
+        // Fungsi untuk menyembunyikan preview
+        function hideImagePreview() {
+            gambarPreview.attr('src', '#');
+            previewContainer.hide();
+            currentGambarContainer.show(); // Tampilkan kembali gambar lama jika preview baru dihapus
+        }
+
+        // 1. Tampilkan gambar yang sudah ada saat halaman dimuat (jika ada)
+        @if ($manajerial->foto)
+            // Prioritaskan old() jika ada error validasi
+            var initialGambarSrc = "{{ old('foto') ? asset('storage/' . old('foto')) : asset('storage/' . $manajerial->foto) }}";
+            showImagePreview(initialGambarSrc);
+            currentGambarContainer.show(); // Pastikan container gambar lama terlihat jika ada
+        @else
+            hideImagePreview(); // Pastikan preview tersembunyi jika tidak ada gambar
+        @endif
+
+        // 2. Tambahkan event listener untuk perubahan pada input file (untuk upload gambar baru)
+        gambarInput.on('change', function(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        showImagePreview(e.target.result); // Tampilkan preview gambar baru
+                    };
+
+                    reader.readAsDataURL(file);
+                } else {
+                    hideImagePreview(); // Sembunyikan preview jika bukan gambar
+                    alert('File yang dipilih bukan gambar. Mohon pilih file gambar (JPG, PNG, GIF).');
+                    gambarInput.val(''); // Kosongkan input file
+                }
+            } else {
+                hideImagePreview(); // Sembunyikan preview jika input file kosong
+            }
+        });
+    });
+</script>
+@endpush

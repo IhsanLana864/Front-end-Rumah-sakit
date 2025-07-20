@@ -11,6 +11,7 @@ class Manajerial extends Model
 
     protected $fillable = [
         'nama',
-        'jabatan'
+        'jabatan',
+        'foto',
     ];
 }

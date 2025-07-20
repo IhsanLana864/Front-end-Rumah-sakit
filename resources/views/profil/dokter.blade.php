@@ -27,63 +27,27 @@
             <h2 style="font-weight: 700; margin-bottom: 20px; color: #005d8f;">Tim Dokter</h2>
 
             <div class="row gy-4">
-
-                @php
-                    $doctors = [
-                        [
-                            'img' => 'staff-3.webp',
-                            'name' => 'dr.M.Lucky N Prameswara,Sp.PD',
-                            'spec' => 'Dokter Spesialis Penyakit Dalam',
-                        ],
-                        [
-                            'img' => 'staff-7.webp',
-                            'name' => 'dr.Teguh Karyadi, Sp.B',
-                            'spec' => 'Dokter Spesialis Bedah',
-                        ],
-                        [
-                            'img' => 'staff-11.webp',
-                            'name' => 'dr.Tendi Robby Setia, Sp.OG.',
-                            'spec' => 'Dokter Spesialis Obstetri dan Ginekologi',
-                        ],
-                        [
-                            'img' => 'staff-14.webp',
-                            'name' => 'dr. Azka Putra Rakhmatullah, Sp.An',
-                            'spec' => 'Dokter Spesialis Anestesi',
-                        ],
-                        ['img' => 'staff-5.webp', 'name' => 'drg. Ridho Akhri Prianto', 'spec' => 'Dokter Gigi'],
-                        ['img' => 'staff-9.webp', 'name' => 'dr.Fasya Sophia Septiavina', 'spec' => 'Dokter Umum'],
-                        ['img' => 'staff-2.webp', 'name' => 'dr. Angela Virgini Tiomegarani', 'spec' => 'Dokter Umum'],
-                        ['img' => 'staff-12.webp', 'name' => 'dr.Hasnawati', 'spec' => 'Dokter Umum'],
-                        ['img' => 'staff-1.webp', 'name' => 'dr.Fajar Utama', 'spec' => 'Dokter Umum'],
-                    ];
-                    $delay = 100;
-                @endphp
-
-                @foreach ($doctors as $doctor)
-                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $delay }}">
+                @forelse ($dokters as $dokter)
+                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="doctor-card">
                             <div class="doctor-image">
-                                <img src="{{ asset('assets/img/health/' . $doctor['img']) }}" alt="Dokter"
+                                <img src="{{ asset('storage/' . $dokter->foto) }}" alt="Dokter"
                                     class="img-fluid">
                                 <div class="doctor-overlay"></div>
                             </div>
                             <div class="doctor-content">
-                                <h4 class="doctor-name">{{ $doctor['name'] }}</h4>
-                                <span class="doctor-specialty">{{ $doctor['spec'] }}</span>
+                                <h4 class="doctor-name">{{ $dokter->nama }}</h4>
+                                <span class="doctor-specialty">{{ $dokter->spesifikasi }}</span>
                                 <a href="{{ url('appointment.html') }}" class="btn-appointment">Buat Janji</a>
                             </div>
                         </div>
                     </div>
-                    @php
-                        $delay += 100;
-                        if ($delay > 400) {
-                            $delay = 100;
-                        }
-                    @endphp
-                @endforeach
-
+                @empty
+                    <div class="text-center">
+                        <span>Belum ada dokter.</span>
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>
-
 @endsection

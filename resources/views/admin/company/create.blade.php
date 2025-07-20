@@ -109,6 +109,16 @@
                             </div>
 
                             <div class="col-12 mb-4">
+                                <label class="form-label">Internal <span class="text-danger">*</span></label>
+                                <textarea type="text" class="form-control mb-2" name="internal" required placeholder="Internal"></textarea>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Eksternal <span class="text-danger">*</span></label>
+                                <textarea type="text" class="form-control mb-2" name="eksternal" required placeholder="Eksternal"></textarea>
+                            </div>
+
+                            <div class="col-12 mb-4">
                                 <label class="form-label">Kontak <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control mb-2" name="kontak" required placeholder="kontak">
                             </div>

@@ -29,8 +29,8 @@ Route::get('/', [PageController::class, 'beranda'])->name('beranda');
 // 📂 Layanan & Fasilitas
 // ==============================
 Route::prefix('layanan-fasilitas')->name('layanan.')->group(function () {
-    Route::view('/layanan', 'layanan-fasilitas.layanan')->name('layanan'); // /layanan
-    Route::view('/fasilitas', 'layanan-fasilitas.fasilitas')->name('fasilitas'); // /layanan/fasilitas
+    Route::get('/layanan', [PageController::class, 'layanan'])->name('layanan'); // /layanan
+    Route::get('/fasilitas', [PageController::class, 'fasilitas'])->name('fasilitas'); // /layanan/fasilitas
 });
 
 // ==============================
@@ -38,20 +38,19 @@ Route::prefix('layanan-fasilitas')->name('layanan.')->group(function () {
 // ==============================
 Route::prefix('profil')->name('profil.')->group(function () {
     Route::get('/tentang-kami', [PageController::class, 'profile'])->name('tentang-kami'); // /profil/tentang-kami
-    Route::view('/manajemen', [PageController::class, 'manajerial'])->name('manajemen');         // /profil/manajemen
-    Route::view('/dokter', [PageController::class, 'dokter'])->name('dokter');                 // /profil/dokter
+    Route::get('/manajemen', [PageController::class, 'manajerial'])->name('manajemen');         // /profil/manajemen
+    Route::get('/dokter', [PageController::class, 'dokter'])->name('dokter');                 // /profil/dokter
 });
 
 // ==============================
 // 📄 Halaman Tunggal
 // ==============================
-Route::view('/kegiatan', 'kegiatan')->name('kegiatan');
+Route::get('/kegiatan', [PageController::class, 'kegiatan'])->name('kegiatan');
 Route::get('/artikel', [PageController::class, 'berita'])->name('artikel');
+Route::get('/detail-berita/{berita}', [PageController::class, 'detailBerita'])->name('detail-berita');
 Route::get('/e-survey', [PageController::class, 'esurvey'])->name('esurvey');
 Route::post('/submit-survey', [SurveyController::class, 'submit'])->name('submit.survey');
 Route::get('/kontak', [PageController::class, 'kontak'])->name('kontak');
-
-Route::get('/detail-berita', [PageController::class, 'detailBerita'])->name('detail-berita');
 // Rute untuk halaman detail berita
 // ==============================
 // 📄 Admin Overall

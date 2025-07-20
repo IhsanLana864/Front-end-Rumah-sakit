@@ -509,9 +509,9 @@
                         </div>
                     </div>
                     <div class="col-lg-4 text-end">
-                        <a href="tel:082130677599" class="emergency-btn">
+                        <a href="tel:{{ $company->kontak }}" class="emergency-btn">
                             <i class="bi bi-telephone-fill"></i>
-                            Hubungi 0821-3067-7599
+                            Hubungi {{ implode('-', str_split($company->kontak, 4)) }}
                         </a>
                     </div>
                 </div>

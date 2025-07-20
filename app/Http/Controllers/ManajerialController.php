@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Manajerial;
+use Illuminate\Support\Facades\Storage;
 
 class ManajerialController extends Controller
 {
@@ -20,13 +21,23 @@ class ManajerialController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi data input
         $request->validate([
             'nama' => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255'
+            'jabatan' => 'required|string|max:255',
+            'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        Manajerial::create($request->all());
+        $fotoPath = null;
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $fotoPath = $file->store('manajerial', 'public'); 
+        }
+
+        Manajerial::create([
+            'nama' => $request->nama,
+            'jabatan' => $request->jabatan,
+            'foto' => $fotoPath
+        ]);
 
         return redirect()->route('admin.manajerial.index')->with('success', 'Data Manajerial berhasil ditambahkan!');
     }
@@ -39,13 +50,26 @@ class ManajerialController extends Controller
     public function update(Request $request, Manajerial $manajerial)
     {
         // Validasi data input
-        $request->validate([
+        $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255'
+            'jabatan' => 'required|string|max:255',
+            'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Update data produk
-        $manajerial->update($request->all());
+        $imagePath = $manajerial->foto;
+
+        if ($request->hasFile('foto')) {
+            if ($manajerial->foto) {
+                Storage::disk('public')->delete($manajerial->foto);
+            }
+            $imagePath = $request->file('foto')->store('manajerial', 'public');
+        }
+
+        $dataToUpdate = $validatedData;
+
+        $dataToUpdate['foto'] = $imagePath;
+
+        $manajerial->update($dataToUpdate);
 
         return redirect()->route('admin.manajerial.index')->with('success', 'Data manajerial berhasil diperbarui!');
     }

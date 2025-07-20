@@ -19,7 +19,7 @@
             </div>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.company.index') }}">Home</a></li>
-                <li class="breadcrumb-item">Edit</li> {{-- Diubah dari Create menjadi Edit --}}
+                <li class="breadcrumb-item">Edit</li>
             </ul>
         </div>
         <div class="page-header-right ms-auto">
@@ -42,15 +42,13 @@
         <div class="row">
             <div class="card stretch stretch-full">
                 <div class="card-body">
-                    {{-- Form action menunjuk ke route update dan menyertakan @method('PUT') --}}
                     <form action="{{ route('admin.company.update', $company->id) }}" enctype="multipart/form-data" method="POST">
                         @csrf
-                        @method('PUT') {{-- Penting untuk metode PUT/PATCH --}}
+                        @method('PUT')
                         <div class="row">
 
                             <div class="col-12 mb-4">
                                 <label class="form-label">Nama <span class="text-danger">*</span></label>
-                                {{-- Menggunakan old() untuk data yang dikirim ulang (jika ada error) atau data dari $company --}}
                                 <input type="text" class="form-control mb-2" name="nama" required placeholder="Nama perusahaan" value="{{ old('nama', $company->nama) }}">
                             </div>
 
@@ -72,10 +70,7 @@
 
                             <div class="col-12 mb-4">
                                 <label class="form-label">Alamat <span class="text-danger">*</span></label>
-                                {{-- Jika alamat menggunakan textarea, gunakan syntax di bawah --}}
                                 <textarea class="form-control mb-2" name="alamat" rows="3" required placeholder="Alamat">{{ old('alamat', $company->alamat) }}</textarea>
-                                {{-- Jika alamat tetap pakai input type="text", gunakan ini: --}}
-                                {{-- <input type="text" class="form-control mb-2" name="alamat" required placeholder="Alamat" value="{{ old('alamat', $company->alamat) }}"> --}}
                             </div>
 
                             <div class="col-12 mb-4">
@@ -114,6 +109,16 @@
                             </div>
 
                             <div class="col-12 mb-4">
+                                <label class="form-label">Internal <span class="text-danger">*</span></label>
+                                <textarea class="form-control mb-2" name="internal" rows="3" required placeholder="Internal">{{ old('internal', $company->internal) }}</textarea>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Eksternal <span class="text-danger">*</span></label>
+                                <textarea class="form-control mb-2" name="eksternal" rows="3" required placeholder="eksternal">{{ old('eksternal', $company->eksternal) }}</textarea>
+                            </div>
+
+                            <div class="col-12 mb-4">
                                 <label class="form-label">Kontak <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control mb-2" name="kontak" required placeholder="Nomor Kontak / Telepon" value="{{ old('kontak', $company->kontak) }}">
                             </div>
@@ -127,7 +132,7 @@
                         <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
                             <button class="btn btn-primary" type="submit">
                                 <i class="feather-save me-2"></i>
-                                <span>Update</span> {{-- Ubah dari Save menjadi Update --}}
+                                <span>Update</span>
                             </button>
                             <a href="{{ route('admin.company.index') }}" class="btn btn-light">
                                 <i class="feather-x me-2"></i>

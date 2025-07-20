@@ -55,6 +55,8 @@
                                         <th>Misi</th>
                                         <th>Motto</th>
                                         <th>Budaya Kerja</th>
+                                        <th>Internal</th>
+                                        <th>Eksternal</th>
                                         <th>Kontak</th>
                                         <th>Email</th>
                                         <th class="text-end">Actions</th>
@@ -75,6 +77,8 @@
                                             <td>{{ $company->misi }}</td>
                                             <td>{{ $company->motto }}</td>
                                             <td>{{ $company->budaya_kerja }}</td>
+                                            <td>{{ $company->internal }}</td>
+                                            <td>{{ $company->eksternal }}</td>
                                             <td>{{ $company->kontak }}</td>
                                             <td>{{ $company->email }}</td>
                                             <td>
@@ -94,7 +98,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="5" class="text-center">Tidak ada data.</td>
+                                            <td colspan="15" class="text-center">Tidak ada data.</td>
                                         </tr>
                                     @endforelse
                                 </tbody>

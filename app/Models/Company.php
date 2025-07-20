@@ -20,6 +20,8 @@ class Company extends Model
         'misi',
         'motto',
         'budaya_kerja',
+        'internal',
+        'eksternal',
         'kontak',
         'email'
     ];

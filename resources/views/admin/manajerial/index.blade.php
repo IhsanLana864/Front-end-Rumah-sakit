@@ -54,7 +54,10 @@
                                     @forelse ($manajerials as $manajerial)
                                         <tr class="single-item">
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $manajerial->nama }}</td>
+                                            <td><img src="{{ asset('storage/' . $manajerial->foto) }}" alt="Foto"
+                                                    width="50" height="50" style="border-radius: 10px;">
+                                                {{ $manajerial->nama }}
+                                            </td>
                                             <td>{{ $manajerial->jabatan }}</td>
                                             <td>
                                                 <div class="hstack gap-2 justify-content-end">

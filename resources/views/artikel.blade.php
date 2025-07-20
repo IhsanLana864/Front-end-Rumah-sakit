@@ -63,29 +63,6 @@
                         <span colspan="5" class="text-center">Tidak ada berita atau artikel.</span>
                     </div>
                 @endforelse
-                
-
-                <!-- <div class="col-xl-4 col-md-6">
-                    <div class="blog__item h-100 d-flex flex-column">
-                        <a href="{{ url('/artikel/detail-berita') }}"
-                            class="blog__item-media d-block position-relative overflow-hidden rounded-3">
-                            <div class="panel wow"></div>
-                            <img class="img-fluid" src="{{ asset('assets/img/gallery/blog-item-1.jpg') }}"
-                                alt="Artikel edukasi kesehatan jantung">
-                            <span class="blog__item-category">Edukasi</span>
-                        </a>
-                        <div class="blog__item-content d-flex flex-column flex-grow-1">
-                            <div class="blog__item-content-date mb-15 mb-xs-10"><i class="fa-solid fa-calendar-days"></i>
-                                <span>8 Juli 2024</span></div>
-                            <h4 class="mb-15 mb-xs-10"><a href="{{ url('/artikel/detail-berita') }}">5 Tips Mudah Menjaga
-                                    Kesehatan Jantung Anda Sehari-hari</a></h4>
-                            <p class="mb-40 mb-xs-30">Kesehatan jantung adalah kunci hidup berkualitas. Simak beberapa tips
-                                mudah yang bisa Anda terapkan...</p>
-                            <a class="rr-a-btn mt-auto" href="{{ route('detail-berita', $berita->id) }}">Baca Selengkapnya <i
-                                    class="fa-solid fa-circle-plus"></i></a>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>

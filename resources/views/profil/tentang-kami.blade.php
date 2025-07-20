@@ -16,7 +16,7 @@
         </div>
         <div class="title-wrapper">
             <h1>Tentang Kami</h1>
-            <p>Mengenal lebih jauh RSUD Sindangbarang sebagai rumah sakit unggulan yang mendukung terwujudnya masyarakat
+            <p>Mengenal lebih jauh {{ $company->nama }} sebagai rumah sakit unggulan yang mendukung terwujudnya masyarakat
                 Cianjur sehat dan mandiri.</p>
         </div>
     </div>
@@ -26,16 +26,15 @@
             <div class="row gy-4">
                 <div class="col-lg-6">
                     <div class="content">
-                        <h2>Profil dan Komitmen RSUD Sindangbarang</h2>
+                        <h2>Profil dan Komitmen {{ $company->nama }}</h2>
                         <p>
-                            <b>Falsafah:</b> Rumah Sakit memberikan pelayanan kesehatan Humanis dan Paripurna serta membina
-                            jaringan kemitraan dan rujukan guna meningkatkan derajat kesehatan masyarakat.
+                            <b>Falsafah:</b> {{ $company->falsafah }}
                         </p>
                         <p>
-                            <b>Visi kami</b> adalah menjadi Rumah Sakit Unggulan yang Mendukung Terwujudnya Masyarakat
-                            Cianjur Sehat dan Mandiri. Untuk mencapainya, kami menjalankan <b>Misi</b> untuk menyediakan
-                            pelayanan berkualitas, meningkatkan partisipasi masyarakat, mengoptimalkan sumber daya &
-                            teknologi, serta meningkatkan kompetensi SDM.
+                            <b>Visi kami</b> {{ $company->visi }}
+                        </p>
+                        <p>
+                            <b>Misi</b> {{ $company->misi }}
                         </p>
 
                         <div class="stats-container" data-aos="fade-up" data-aos-delay="200">
@@ -43,7 +42,18 @@
                                 <div class="col-sm-6 col-lg-12 col-xl-6">
                                     <div class="stat-item">
                                         <div class="stat-number">
-                                            <span data-purecounter-start="0" data-purecounter-end="8"
+                                            @php
+                                                $longText = $company->eksternal;
+
+                                                if (!empty($longText)) {
+                                                    $commaCount = substr_count($longText, ',');
+                                                    $totalItems = $commaCount + 1;
+                                                } else {
+                                                    $totalItems = 0;
+                                                    $totalItems = 1;
+                                                }
+                                            @endphp
+                                            <span data-purecounter-start="0" data-purecounter-end="{{ $totalItems }}"
                                                 data-purecounter-duration="1" class="purecounter"></span>
                                         </div>
                                         <div class="stat-label">Kecamatan Terlayani</div>
@@ -97,30 +107,16 @@
                                 berbagai pihak untuk memberikan layanan terbaik.</p>
                         </div>
                         <div class="certifications-grid">
-                            <div class="certification-item">
-                                <img src="{{ asset('assets/img/clients/clients-1.webp') }}" alt="Mitra 1"
-                                    class="img-fluid">
-                            </div>
-                            <div class="certification-item">
-                                <img src="{{ asset('assets/img/clients/clients-2.webp') }}" alt="Mitra 2"
-                                    class="img-fluid">
-                            </div>
-                            <div class="certification-item">
-                                <img src="{{ asset('assets/img/clients/clients-3.webp') }}" alt="Mitra 3"
-                                    class="img-fluid">
-                            </div>
-                            <div class="certification-item">
-                                <img src="{{ asset('assets/img/clients/clients-4.webp') }}" alt="Mitra 4"
-                                    class="img-fluid">
-                            </div>
-                            <div class="certification-item">
-                                <img src="{{ asset('assets/img/clients/clients-5.webp') }}" alt="Mitra 5"
-                                    class="img-fluid">
-                            </div>
-                            <div class="certification-item">
-                                <img src="{{ asset('assets/img/clients/clients-6.webp') }}" alt="Mitra 6"
-                                    class="img-fluid">
-                            </div>
+                            @forelse ($partners as $partner)
+                                <div class="certification-item">
+                                    <img src="{{ asset('storage/' . $partner->gambar) }}" alt="{{ $partner->nama }}"
+                                        class="img-fluid">
+                                </div>
+                            @empty
+                                <div class="text-center">
+                                    <span>Belum ada mitra yang terkait.</span>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>

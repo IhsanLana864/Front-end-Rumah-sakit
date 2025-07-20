@@ -73,8 +73,6 @@ class DokterController extends Controller
 
         $dokter->update($dataToUpdate);
 
-        // $dokter->update($request->all());
-
         return redirect()->route('admin.dokter.index')->with('success', 'Data Dokter berhasil diperbarui!');
     }
 

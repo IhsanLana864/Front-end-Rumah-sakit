@@ -9,6 +9,11 @@ use App\Models\Dokter;
 use App\Models\Manajerial;
 use App\Models\Sosmed;
 use App\Models\Berita;
+use App\Models\Partner;
+use App\Models\Kegiatan;
+use App\Models\Layanan;
+use App\Models\Instalasi;
+use App\Models\Sub_Instalasi;
 
 class PageController extends Controller
 {
@@ -27,23 +32,50 @@ class PageController extends Controller
         return view('index', compact('banners', 'company'));
     }
 
-    //PROFILE
+    //Layanan & Fasilitas
+    public function layanan()
+    {
+        $company = Company::first();
+        $layanans = Layanan::all();
+        $instalasis = Instalasi::all();
+        return view('layanan-fasilitas.layanan', compact('company', 'layanans', 'instalasis'));
+    }
+
+    public function fasilitas()
+    {
+        $company = Company::first();
+
+        return view('layanan-fasilitas.fasilitas', compact('company'));
+    }
+
+    //Kegiatan
+    public function kegiatan()
+    {
+        $company = Company::first();
+        $kegiatans = Kegiatan::all();
+        return view('kegiatan', compact('company', 'kegiatans'));
+    }
+
+    //Profil
     public function profile()
     {
         $company = Company::first();
-        return view('profil.tentang-kami', compact('company'));
+        $partners = Partner::all();
+        return view('profil.tentang-kami', compact('company', 'partners'));
     }
 
     public function dokter()
     {
-        $dokter = Dokter::all();
-        return view('profil.dokter', compact('dokter'));
+        $dokters = Dokter::all();
+        $company = Company::first();
+        return view('profil.dokter', compact('dokters', 'company'));
     }
 
     public function manajerial()
     {
-        $manajerial = Manajerial::all();
-        return view('profil.manajemen', compact('manajerial'));
+        $manajerials = Manajerial::all();
+        $company = Company::first();
+        return view('profil.manajemen', compact('manajerials', 'company'));
     }
 
     //Berita & Artikel
@@ -55,11 +87,18 @@ class PageController extends Controller
         return view('artikel', compact('company', 'sosmeds', 'beritas'));
     }
 
-    public function detailBerita(Berita $berita)
+    public function detailBerita($id)
     {
+        $berita = Berita::withoutGlobalScopes()->find($id);
+
+        if (!$berita) {
+            abort(404, 'Berita tidak ditemukan.');
+        }
+        
         $company = Company::first();
         $sosmeds = Sosmed::all();
-        return view('detail-berita', compact('company', 'sosmeds', 'berita'));
+        $otherBeritas = Berita::where('id', '!=', $berita->id)->latest()->take(3)->get();
+        return view('detail-berita', compact('company', 'sosmeds', 'berita', 'otherBeritas'));
     }
 
     //E-Survey

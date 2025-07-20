@@ -78,7 +78,7 @@
 
                             <div class="col-12 mb-4">
                                 <label class="form-label">Logo</label>
-                                <input type="file" class="form-control mb-2" id="logo_instalasi_input" name="logo" required>
+                                <input type="file" class="form-control mb-2" id="logo_instalasi_input" name="logo">
                                 @error('logo')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror

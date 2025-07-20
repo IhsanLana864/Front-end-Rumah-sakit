@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  {{-- Judul halaman akan dinamis, defaultnya adalah RSUD Sindangbarang --}}
   <title>@yield('title', '{{ $company->nama }}')</title>
   <meta name="description" content="Menjadi Rumah Sakit Unggulan yang Mendukung Terwujudnya Masyarakat Cianjur Sehat dan Mandiri">
   <meta name="keywords" content="RSUD, Sindangbarang, Cianjur, Rumah Sakit, Kesehatan">
@@ -115,8 +114,19 @@
                 </ul>
             </div>
             <div class="col-lg-4 col-md-6 footer-links">
+                @php
+                    $longText = $company->eksternal;
+
+                    if (!empty($longText)) {
+                        $commaCount = substr_count($longText, ',');
+                        $totalItems = $commaCount + 1;
+                    } else {
+                        $totalItems = 0;
+                        $totalItems = 1;
+                    }
+                @endphp
                 <h4>Jangkauan Wilayah</h4>
-                <p>Melayani masyarakat dari 8 kecamatan terdekat: Cibinong, Cijati, Cikadu, Leles, Agrabinta, Sindangbarang, Cidaun, dan Naringgul.</p>
+                <p>Melayani masyarakat dari {{ $totalItems }} kecamatan terdekat: {{$company->eksternal}}.</p>
             </div>
         </div>
     </div>
