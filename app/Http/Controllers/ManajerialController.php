@@ -24,7 +24,7 @@ class ManajerialController extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
-            'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $fotoPath = null;
@@ -53,7 +53,7 @@ class ManajerialController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
-            'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $imagePath = $manajerial->foto;

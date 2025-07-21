@@ -24,7 +24,7 @@ class DokterController extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'spesifikasi' => 'required|string|max:255',
-            'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $fotoPath = null;
@@ -53,7 +53,7 @@ class DokterController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
             'spesifikasi' => 'required|string|max:255',
-            'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $imagePath = $dokter->foto;

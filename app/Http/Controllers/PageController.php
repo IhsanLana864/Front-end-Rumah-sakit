@@ -15,6 +15,7 @@ use App\Models\Layanan;
 use App\Models\Instalasi;
 use App\Models\Sub_Instalasi;
 use App\Models\Facilitie;
+use App\Models\Internal;
 
 class PageController extends Controller
 {
@@ -32,7 +33,8 @@ class PageController extends Controller
         $company = Company::first();
         $dokters = Dokter::limit(6)->get();
         $Sub_Instalasis = Sub_Instalasi::limit(6)->get();
-        return view('index', compact('banners', 'company', 'dokters','Sub_Instalasis'));
+        $internal = Internal::first();
+        return view('index', compact('banners', 'company', 'dokters','Sub_Instalasis', 'internal'));
     }
 
     //Layanan & Fasilitas
@@ -65,7 +67,8 @@ class PageController extends Controller
     {
         $company = Company::first();
         $partners = Partner::all();
-        return view('profil.tentang-kami', compact('company', 'partners'));
+        $internal = Internal::first();
+        return view('profil.tentang-kami', compact('company', 'partners', 'internal'));
     }
 
     public function dokter()

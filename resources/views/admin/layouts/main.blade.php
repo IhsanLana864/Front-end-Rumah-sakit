@@ -46,6 +46,7 @@
                         </a>
                         <ul class="nxl-submenu">
                             <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.company.index') }}">Profile</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.internal.index') }}">Internal</a></li>
                             <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.sosmed.index') }}">Social Media</a></li>
                         </ul>
                     </li>

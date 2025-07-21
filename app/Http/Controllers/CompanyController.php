@@ -27,7 +27,6 @@ class CompanyController extends Controller
                 'required',
                 'file',
                 'mimes:jpeg,png,jpg,gif,svg',
-                'max:2048',
                 function ($attribute, $value, $fail) {
                     if ($value->getClientOriginalExtension() === 'svg' || $value->getMimeType() === 'image/svg+xml') {
                         return;
@@ -47,7 +46,6 @@ class CompanyController extends Controller
             'misi' => 'required|string',
             'motto' => 'required|string',
             'budaya_kerja' => 'required|string',
-            'internal' => 'required|string',
             'eksternal' => 'required|string',
             'kontak' => 'required|string|max:255',
             'email' => 'required|string|max:255',
@@ -76,7 +74,7 @@ class CompanyController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif',
             'alamat' => 'required|string',
             'long' => 'required|string|max:255',
             'lat' => 'required|string|max:255',
@@ -85,7 +83,6 @@ class CompanyController extends Controller
             'misi' => 'required|string',
             'motto' => 'required|string',
             'budaya_kerja' => 'required|string',
-            'internal' => 'required|string',
             'eksternal' => 'required|string',
             'kontak' => 'required|string|max:255',
             'email' => 'required|string|max:255',

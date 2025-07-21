@@ -27,7 +27,7 @@ class SubInstalasiController extends Controller
             'instalasi_id' => 'required|exists:instalasis,id',
             'nama_sub' => 'required|string|max:255',
             'keterangan' => 'required|string|max:255',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $fotoPath = null;
@@ -58,7 +58,7 @@ class SubInstalasiController extends Controller
             'instalasi_id' => 'required|exists:instalasis,id',
             'nama_sub' => 'required|string|max:255',
             'keterangan' => 'required|string|max:255',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $imagePath = $subInstalasi->logo;

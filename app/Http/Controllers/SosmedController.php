@@ -22,7 +22,7 @@ class SosmedController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif',
             'nama_sosmed' => 'required|string|max:255',
             'username' => 'required|string|max:255',
             'link' => 'required|string|max:255' 
@@ -52,7 +52,7 @@ class SosmedController extends Controller
     public function update(Request $request, Sosmed $sosmed)
     {
         $validatedData = $request->validate([
-            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif',
             'nama_sosmed' => 'required|string|max:255',
             'username' => 'required|string|max:255',
             'link' => 'required|string|max:255'

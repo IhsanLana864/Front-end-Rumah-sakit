@@ -109,11 +109,6 @@
                             </div>
 
                             <div class="col-12 mb-4">
-                                <label class="form-label">Internal <span class="text-danger">*</span></label>
-                                <textarea class="form-control mb-2" name="internal" rows="3" required placeholder="Internal">{{ old('internal', $company->internal) }}</textarea>
-                            </div>
-
-                            <div class="col-12 mb-4">
                                 <label class="form-label">Eksternal <span class="text-danger">*</span></label>
                                 <textarea class="form-control mb-2" name="eksternal" rows="3" required placeholder="eksternal">{{ old('eksternal', $company->eksternal) }}</textarea>
                             </div>

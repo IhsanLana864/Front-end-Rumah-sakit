@@ -27,7 +27,7 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif',
             'judul' => 'required|string|max:255',
             'detail' => 'required|string',
             'kategori' => 'required|string|max:255',
@@ -58,7 +58,7 @@ class BeritaController extends Controller
     {
         // Validasi data input
         $validatedData = $request->validate([
-            'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif',
             'judul' => 'required|string|max:255',
             'detail' => 'required|string',
             'kategori' => 'required|string|max:255',

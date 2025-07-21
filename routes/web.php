@@ -19,6 +19,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\InstalasiController;
 use App\Http\Controllers\SubInstalasiController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\InternalController;
 
 // ==============================
 // 🔰 Beranda
@@ -86,6 +87,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         Route::resource('berita', BeritaController::class)->parameters(['berita' => 'berita']);
         Route::resource('instalasi', InstalasiController::class);
         Route::resource('sub-instalasi', SubInstalasiController::class);
+        Route::resource('internal', InternalController::class);
     });
 
     // Rute yang HANYA bisa diakses oleh Super Admin

@@ -128,10 +128,10 @@
             <div class="row gy-5 align-items-center">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
                     <div class="about-image">
-                        <img src="{{ asset('assets/img/health/facilities-1.webp') }}" alt="Modern Healthcare Facility"
+                        <img src="{{ asset('storage/' . $internal->gambar) }}" alt="Modern Healthcare Facility"
                             class="img-fluid rounded-3 mb-4" />
                         <div class="experience-badge">
-                            <span class="years">Tipe D</span>
+                            <span class="years">{{ $internal->kelas_rumah_sakit }}</span>
                             <span class="text">Non Pendidikan</span>
                         </div>
                     </div>
@@ -141,15 +141,11 @@
                     <div class="about-content">
                         <h2>Berkomitmen pada Pelayanan Pasien yang Profesional</h2>
                         <p class="lead">
-                            Sebagai rumah sakit milik Pemerintah Daerah Kabupaten Cianjur,
+                            Sebagai rumah sakit milik {{ $internal->kepemilikan }},
                             kami berdedikasi untuk memberikan layanan terbaik.
                         </p>
                         <p>
-                            Dengan total luas tanah 49.982 M² dan luas bangunan 2776,78
-                            M², kami didukung oleh fasilitas memadai seperti listrik PLN
-                            33.000 VA, air dari sumur bor, area parkir luas, serta
-                            keamanan oleh satpam dan CCTV untuk kenyamanan dan keselamatan
-                            pasien.
+                            {{ $internal->deskripsi_fasilitas }}
                         </p>
 
                         <div class="row g-4 mt-4">

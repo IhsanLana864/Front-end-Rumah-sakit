@@ -22,7 +22,7 @@ class FacilitieController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
             'judul' => 'nullable|string|max:255',
             'keterangan' => 'nullable|string'
         ]);
@@ -51,7 +51,7 @@ class FacilitieController extends Controller
     {
         // Validasi data input
         $validatedData = $request->validate([
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
             'judul' => 'nullable|string|max:255',
             'keterangan' => 'nullable|string'
         ]);

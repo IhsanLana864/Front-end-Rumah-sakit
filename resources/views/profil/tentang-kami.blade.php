@@ -62,7 +62,7 @@
                                 <div class="col-sm-6 col-lg-12 col-xl-6">
                                     <div class="stat-item">
                                         <div class="stat-number">
-                                            <span data-purecounter-start="0" data-purecounter-end="49982"
+                                            <span data-purecounter-start="0" data-purecounter-end="{{ $internal->luas_tanah }}"
                                                 data-purecounter-duration="2" class="purecounter"></span> m²
                                         </div>
                                         <div class="stat-label">Luas Area Rumah Sakit</div>

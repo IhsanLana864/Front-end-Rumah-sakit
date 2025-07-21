@@ -15,10 +15,10 @@
     <div class="page-header">
         <div class="page-header-left d-flex align-items-center">
             <div class="page-header-title">
-                <h5 class="m-b-10">Company</h5>
+                <h5 class="m-b-10">Internal</h5>
             </div>
             <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('admin.company.index') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.internal.index') }}">Home</a></li>
                 <li class="breadcrumb-item">Create</li>
             </ul>
         </div>
@@ -44,85 +44,48 @@
         <div class="row">
             <div class="card stretch stretch-full">
                 <div class="card-body">
-                    <form action="{{ route('admin.company.store') }}" enctype="multipart/form-data" method="POST">
+                    <form action="{{ route('admin.internal.store') }}" enctype="multipart/form-data" method="POST">
                     @csrf
                         <div class="row">
-
                             <div class="col-12 mb-4">
-                                <label class="form-label">Nama <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control mb-2" name="nama" required placeholder="Nama company">
-                            </div>
-
-                            <div class="col-12 mb-4">
-                                <label class="form-label">Logo</label>
-                                <input type="file" class="form-control mb-2" id="logo_company_input" name="logo" required>
-                                @error('logo')
+                                <label class="form-label">Gambar <span class="text-danger">*</span></label>
+                                <input type="file" class="form-control mb-2" id="foto_internal_input" name="gambar" required>
+                                @error('gambar')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 <small class="form-text text-muted">Maksimal 2MB, format JPG, PNG, GIF</small>
 
                                 {{-- Tempat untuk preview gambar --}}
-                                <div class="mt-3" id="logo_company_preview_container" style="display: none;">
+                                <div class="mt-3" id="foto_internal_preview_container" style="display: none;">
                                     <p>Preview Gambar:</p>
-                                    <img id="logo_company_preview" src="#" alt="Preview Logo" style="max-width: 300px; height: auto; border: 1px solid #ddd; padding: 5px;">
+                                    <img id="foto_internal_preview" src="#" alt="Preview Gambar" style="max-width: 300px; height: auto; border: 1px solid #ddd; padding: 5px;">
                                 </div>
                             </div>
 
                             <div class="col-12 mb-4">
-                                <label class="form-label">Alamat <span class="text-danger">*</span></label>
-                                <textarea type="text" class="form-control mb-2" name="alamat" required placeholder="Alamat"></textarea>
+                                <label class="form-label">Kepemilikan <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control mb-2" name="kepemilikan" required placeholder="Kepemilikan">
                             </div>
 
                             <div class="col-12 mb-4">
-                                <label class="form-label">Long <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control mb-2" name="long" required placeholder="long">
+                                <label class="form-label">Kelas Rumah Sakit <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control mb-2" name="kelas_rumah_sakit" required placeholder="Kelas rumah sakit">
                             </div>
 
                             <div class="col-12 mb-4">
-                                <label class="form-label">Lat <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control mb-2" name="lat" required placeholder="lat">
+                                <label class="form-label">Luas Tanah <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control mb-2" name="luas_tanah" required placeholder="Luas tanah">
                             </div>
 
                             <div class="col-12 mb-4">
-                                <label class="form-label">Falsafah <span class="text-danger">*</span></label>
-                                <textarea type="text" class="form-control mb-2" name="falsafah" required placeholder="Falsafah"></textarea>
+                                <label class="form-label">Luas Bangunan <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control mb-2" name="luas_bangunan" required placeholder="Luas bangunan">
                             </div>
 
                             <div class="col-12 mb-4">
-                                <label class="form-label">Visi <span class="text-danger">*</span></label>
-                                <textarea type="text" class="form-control mb-2" name="visi" required placeholder="Visi"></textarea>
+                                <label class="form-label">Deskripsi Fasilitas <span class="text-danger">*</span></label>
+                                <textarea type="text" class="form-control mb-2" style="height:400px" name="deskripsi_fasilitas" required placeholder="Deskripsi fasilitas"></textarea>
                             </div>
-
-                            <div class="col-12 mb-4">
-                                <label class="form-label">Misi <span class="text-danger">*</span></label>
-                                <textarea type="text" class="form-control mb-2" name="misi" required placeholder="Misi"></textarea>
-                            </div>
-
-                            <div class="col-12 mb-4">
-                                <label class="form-label">Motto <span class="text-danger">*</span></label>
-                                <textarea type="text" class="form-control mb-2" name="motto" required placeholder="Motto"></textarea>
-                            </div>
-
-                            <div class="col-12 mb-4">
-                                <label class="form-label">Budaya Kerja <span class="text-danger">*</span></label>
-                                <textarea type="text" class="form-control mb-2" name="budaya_kerja" required placeholder="Budaya Kerja"></textarea>
-                            </div>
-
-                            <div class="col-12 mb-4">
-                                <label class="form-label">Eksternal <span class="text-danger">*</span></label>
-                                <textarea type="text" class="form-control mb-2" name="eksternal" required placeholder="Eksternal"></textarea>
-                            </div>
-
-                            <div class="col-12 mb-4">
-                                <label class="form-label">Kontak <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control mb-2" name="kontak" required placeholder="kontak">
-                            </div>
-
-                            <div class="col-12 mb-4">
-                                <label class="form-label">Email <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control mb-2" name="email" required placeholder="email">
-                            </div>
-
                         </div>
                         <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
                             <button class="btn btn-primary" type="submit">
@@ -141,9 +104,9 @@
 <script>
     $(document).ready(function() {
         // Ambil elemen input file dan preview gambar
-        const gambarInput = $('#logo_company_input');
-        const gambarPreview = $('#logo_company_preview');
-        const previewContainer = $('#logo_company_preview_container');
+        const gambarInput = $('#foto_internal_input');
+        const gambarPreview = $('#foto_internal_preview');
+        const previewContainer = $('#foto_internal_preview_container');
 
         // Tambahkan event listener untuk perubahan pada input file
         gambarInput.on('change', function(event) {

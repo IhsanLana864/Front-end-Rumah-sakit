@@ -23,7 +23,6 @@ return new class extends Migration
             $table->longText('misi');
             $table->longText('motto');
             $table->longText('budaya_kerja');
-            $table->longText('internal');
             $table->longText('eksternal');
             $table->string('kontak');
             $table->string('email');
