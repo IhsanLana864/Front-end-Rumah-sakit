@@ -110,7 +110,8 @@
 
                             <div class="col-12 mb-4">
                                 <label class="form-label">Eksternal <span class="text-danger">*</span></label>
-                                <textarea type="text" class="form-control mb-2" name="eksternal" required placeholder="Eksternal"></textarea>
+                                <textarea type="text" class="form-control mb-2" name="eksternal" required placeholder="Kecamatan terjangkau"></textarea>
+                                <small class="form-text text-muted">Gunakan format penulisan : kecamatan, kecamatan, kecamatan, dan kecamatan</small>
                             </div>
 
                             <div class="col-12 mb-4">

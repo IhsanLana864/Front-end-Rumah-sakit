@@ -110,7 +110,8 @@
 
                             <div class="col-12 mb-4">
                                 <label class="form-label">Eksternal <span class="text-danger">*</span></label>
-                                <textarea class="form-control mb-2" name="eksternal" rows="3" required placeholder="eksternal">{{ old('eksternal', $company->eksternal) }}</textarea>
+                                <textarea class="form-control mb-2" name="eksternal" rows="3" required placeholder="Kecamatan terjangkau">{{ old('eksternal', $company->eksternal) }}</textarea>
+                                <small class="form-text text-muted">Gunakan format penulisan : kecamatan, kecamatan, kecamatan, dan kecamatan</small>
                             </div>
 
                             <div class="col-12 mb-4">

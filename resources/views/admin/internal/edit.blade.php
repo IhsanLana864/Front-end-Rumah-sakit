@@ -78,11 +78,13 @@
                             <div class="col-12 mb-4">
                                 <label class="form-label">Luas Tanah <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control mb-2" name="luas_tanah" required placeholder="Luas tanah" value="{{ old('luas_tanah', $internal->luas_tanah) }}">
+                                <small class="form-text text-muted">Hanya input angka saja</small>
                             </div>
 
                             <div class="col-12 mb-4">
                                 <label class="form-label">Luas Bangunan <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control mb-2" name="luas_bangunan" required placeholder="Luas bangunan" value="{{ old('luas_bangunan', $internal->luas_bangunan) }}">
+                                <small class="form-text text-muted">Hanya input angka saja</small>
                             </div>
 
                             <div class="col-12 mb-4">
