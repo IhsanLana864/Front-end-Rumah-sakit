@@ -72,8 +72,8 @@
                         </div>
 
                         <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-                            <a href="doctors.html" class="btn-primary">Temui Tim Dokter Kami</a>
-                            <a href="services.html" class="btn-secondary">Lihat Layanan Kami</a>
+                            <a href="{{ route('profil.dokter') }}" class="btn-primary">Temui Tim Dokter Kami</a>
+                            <a href="{{ route('layanan.layanan') }}" class="btn-secondary">Lihat Layanan Kami</a>
                         </div>
                     </div>
                 </div>

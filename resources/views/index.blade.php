@@ -177,7 +177,7 @@
                         </div>
 
                         <div class="cta-wrapper mt-4">
-                            <a href="" class="btn btn-primary">Profil Lengkap</a>
+                            <a href="{{ route('profil.tentang-kami') }}" class="btn btn-primary">Profil Lengkap</a>
                             <a href="{{ route('profil.dokter') }}" class="btn btn-outline">Temui Tim Kami</a>
                         </div>
                     </div>
@@ -300,7 +300,7 @@
                         pilihan Anda.
                     </p>
                     <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-                        <a href="#" class="btn-primary">Buat Janji Temu</a>
+                        <a href="https://api.whatsapp.com/send/?phone=6282130677599&text&type=phone_number&app_absent=0" class="btn-primary">Buat Janji Temu</a>
                         <a href="" class="btn-secondary">Cari Dokter</a>
                     </div>
                 </div>

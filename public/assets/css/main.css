@@ -2108,8 +2108,8 @@ section,
 }
 
 .call-to-action .emergency-alert .emergency-btn {
-  background: var(--contrast-color);
-  color: var(--accent-color);
+  background: var(--urgent-color);
+  color: var(--contrast-color);
   padding: 15px 25px;
   border-radius: 50px;
   font-weight: 700;

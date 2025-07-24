@@ -38,7 +38,11 @@
                             <div class="doctor-content">
                                 <h4 class="doctor-name">{{ $dokter->nama }}</h4>
                                 <span class="doctor-specialty">{{ $dokter->spesifikasi }}</span>
-                                <a href="{{ url('appointment.html') }}" class="btn-appointment">Buat Janji</a>
+                                <div class="appointment-actions">
+                                    <!-- <a href="" class="btn btn-outline-primary btn-sm">Lihat Profil</a> -->
+                                    <a href="https://api.whatsapp.com/send/?phone=6282130677599&text&type=phone_number&app_absent=0"
+                                        class="btn-appointment">Buat Janji</a>
+                                </div>
                             </div>
                         </div>
                     </div>
