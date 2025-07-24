@@ -67,4 +67,11 @@ class SurveyController extends Controller
         $surveys = Survey::all();
         return view('admin.survey.index', compact('surveys'));
     }
+
+    public function destroy(Survey $survey)
+    {
+        $survey->delete();
+
+        return redirect()->route('admin.survey.index')->with('success', 'Data berhasil dihapus!');
+    }
 }

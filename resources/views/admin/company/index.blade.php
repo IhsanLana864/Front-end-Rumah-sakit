@@ -4,7 +4,7 @@
     <div class="page-header">
         <div class="page-header-left d-flex align-items-center">
             <div class="page-header-title">
-                <h5 class="m-b-10">Company</h5>
+                <h5 class="m-b-10">Company Profile</h5> {{-- Ubah judul --}}
             </div>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.company.index') }}">Home</a></li>
@@ -20,10 +20,20 @@
                     </a>
                 </div>
                 <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
-                    <a href="{{ route('admin.company.create') }}" class="btn btn-primary">
-                        <i class="feather-plus me-2"></i>
-                        <span>New Data</span>
-                    </a>
+                    @if ($companies->isEmpty())
+                        <a href="{{ route('admin.company.create') }}" class="btn btn-primary">
+                            <i class="feather-plus me-2"></i>
+                            <span>New Data</span>
+                        </a>
+                    @else
+                        @php
+                            $company = $companies->first(); // Ambil objek company pertama
+                        @endphp
+                        <a href="{{ route('admin.company.edit', $company->id) }}" class="btn btn-warning">
+                            <i class="feather-edit-3 me-2"></i>
+                            <span>Edit Profile</span>
+                        </a>
+                    @endif
                 </div>
             </div>
             <div class="d-md-none d-flex align-items-center">
@@ -39,72 +49,74 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card stretch stretch-full">
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table table-hover" id="companyTable">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Logo</th>
-                                        <th>Alamat</th>
-                                        <th>Long</th>
-                                        <th>Lat</th>
-                                        <th>falsafah</th>
-                                        <th>Visi</th>
-                                        <th>Misi</th>
-                                        <th>Motto</th>
-                                        <th>Budaya Kerja</th>
-                                        <th>Eksternal</th>
-                                        <th>Kontak</th>
-                                        <th>Email</th>
-                                        <th class="text-end">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($companies as $company)
-                                        <tr class="single-item">
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $company->nama }}</td>
-                                            <td><img src="{{ asset('storage/' . $company->logo) }}" alt="Logo" width="50" height="50" style="border-radius: 10px;">
-                                            </td>
-                                            <td>{{ $company->alamat }}</td>
-                                            <td>{{ $company->long }}</td>
-                                            <td>{{ $company->lat }}</td>
-                                            <td>{{ $company->falsafah }}</td>
-                                            <td>{{ $company->visi }}</td>
-                                            <td>{{ $company->misi }}</td>
-                                            <td>{{ $company->motto }}</td>
-                                            <td>{{ $company->budaya_kerja }}</td>
-                                            <td>{{ $company->eksternal }}</td>
-                                            <td>{{ $company->kontak }}</td>
-                                            <td>{{ $company->email }}</td>
-                                            <td>
-                                                <div class="hstack gap-2 justify-content-end">
-                                                    <a href="{{ route('admin.company.edit', $company->id) }}" class="avatar-text avatar-md">
-                                                        <i class="feather feather-edit-3"></i>
-                                                    </a>
-                                                    <form action="{{ route('admin.company.destroy', $company->id) }}" method="POST" class="d-inline">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="avatar-text avatar-md" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                            <i class="feather feather-trash-2"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="15" class="text-center">Tidak ada data.</td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="card-body"> {{-- Hapus p-0 jika ingin padding --}}
+                        @forelse ($companies as $company)
+                            <div class="row mb-4">
+                                <div class="col-md-3 text-center">
+                                    <h6 class="text-muted mb-2">Logo Perusahaan</h6>
+                                    @if ($company->logo)
+                                        <img src="{{ asset('storage/' . $company->logo) }}" alt="Logo Perusahaan" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover; border: 2px solid #eee;">
+                                    @else
+                                        <div class="bg-light d-flex align-items-center justify-content-center rounded-circle" style="width: 150px; height: 150px; border: 2px dashed #ccc;">
+                                            <i class="bi bi-image text-muted fs-3"></i>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="col-md-9">
+                                    <h4 class="mb-3">{{ $company->nama }}</h4>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <strong>Alamat:</strong>
+                                            <p>{{ $company->alamat }}</p>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <strong>Kontak:</strong>
+                                            <p>{{ $company->kontak ? implode('-', str_split($company->kontak, 4)) : '-' }}</p>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <strong>Email:</strong>
+                                            <p>{{ $company->email }}</p>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <strong>Koordinat (Long, Lat):</strong>
+                                            <p>{{ $company->long }}, {{ $company->lat }}</p>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <strong>Falsafah:</strong>
+                                            <p>{{ $company->falsafah }}</p>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <strong>Visi:</strong>
+                                            <p>{{ $company->visi }}</p>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <strong>Misi:</strong>
+                                            <p>{{ $company->misi }}</p>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <strong>Motto:</strong>
+                                            <p>{{ $company->motto }}</p>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <strong>Budaya Kerja:</strong>
+                                            <p>{{ $company->budaya_kerja }}</p>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <strong>Eksternal:</strong>
+                                            <p>{{ $company->eksternal }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @empty
+                            <div class="text-center py-5">
+                                <p>Tidak ada data profil perusahaan. Silakan tambahkan data baru.</p>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>
         </div>
-    <div>
+    </div>
 @endsection

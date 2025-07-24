@@ -77,17 +77,26 @@
                             </div>
 
                             <div class="col-12 mb-4">
-                                <label class="form-label">Logo</label>
-                                <input type="file" class="form-control mb-2" id="logo_instalasi_input" name="logo">
+                                <label class="form-label">Logo <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control mb-2" name="logo" value="{{ old('logo') }}" required placeholder="house">
                                 @error('logo')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                                <small class="form-text text-muted">Cari logo : <a href="https://icons.getbootstrap.com/">https://icons.getbootstrap.com/</a></small>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Foto</label>
+                                <input type="file" class="form-control mb-2" id="foto_instalasi_input" name="foto">
+                                @error('foto')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 <small class="form-text text-muted">Maksimal 2MB, format JPG, PNG, GIF</small>
 
                                 {{-- Tempat untuk preview gambar --}}
-                                <div class="mt-3" id="logo_instalasi_preview_container" style="display: none;">
+                                <div class="mt-3" id="foto_instalasi_preview_container" style="display: none;">
                                     <p>Preview Gambar:</p>
-                                    <img id="logo_instalasi_preview" src="#" alt="Preview Logo" style="max-width: 300px; height: auto; border: 1px solid #ddd; padding: 5px;">
+                                    <img id="foto_instalasi_preview" src="#" alt="Preview foto" style="max-width: 300px; height: auto; border: 1px solid #ddd; padding: 5px;">
                                 </div>
                             </div>
                         </div>
@@ -108,9 +117,9 @@
 <script>
     $(document).ready(function() {
         // Ambil elemen input file dan preview gambar
-        const gambarInput = $('#logo_instalasi_input');
-        const gambarPreview = $('#logo_instalasi_preview');
-        const previewContainer = $('#logo_instalasi_preview_container');
+        const gambarInput = $('#foto_instalasi_input');
+        const gambarPreview = $('#foto_instalasi_preview');
+        const previewContainer = $('#foto_instalasi_preview_container');
 
         // Tambahkan event listener untuk perubahan pada input file
         gambarInput.on('change', function(event) {

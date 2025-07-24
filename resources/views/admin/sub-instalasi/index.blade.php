@@ -49,6 +49,7 @@
                                         <th>Sub Instalasi</th>
                                         <th>Keterangan</th>
                                         <th>Logo</th>
+                                        <th>Foto</th>
                                         <th class="text-end">Actions</th>
                                     </tr>
                                 </thead>
@@ -59,8 +60,9 @@
                                             <td>{{ $subInstalasi->instalasi->nama_instalasi ?? 'N/A' }}</td>
                                             <td>{{ $subInstalasi->nama_sub }}</td>
                                             <td>{{ $subInstalasi->keterangan }}</td>
+                                            <td><i class="bi bi-{{ $subInstalasi->logo }}"></i></td>
                                             <td>
-                                                <img src="{{ asset('storage/' . $subInstalasi->logo) }}" alt="Logo" width="50" height="50" style="border-radius: 10px;">
+                                                <img src="{{ asset('storage/' . $subInstalasi->foto) }}" alt="foto" width="50" height="50" style="border-radius: 10px;">
                                             </td>
                                             <td>
                                                 <div class="hstack gap-2 justify-content-end">
@@ -79,7 +81,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="5" class="text-center">Tidak ada data.</td>
+                                            <td colspan="7" class="text-center">Tidak ada data.</td>
                                         </tr>
                                     @endforelse
                                 </tbody>

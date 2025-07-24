@@ -48,6 +48,7 @@
                             <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.company.index') }}">Profile</a></li>
                             <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.internal.index') }}">Internal</a></li>
                             <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.sosmed.index') }}">Social Media</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.partner.index') }}">Media Partner</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -64,7 +65,7 @@
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         <a href="javascript:void(0);" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-home"></i></span>
+                            <span class="nxl-micon"><i class="feather-sliders"></i></span>
                             <span class="nxl-mtext">Instalasi</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
@@ -87,12 +88,6 @@
                             <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.kegiatan.index') }}">Kegiatan</a></li>
                             <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.facilitie.index') }}">Fasilitas</a></li>
                         </ul>
-                    </li>
-                    <li class="nxl-item nxl-hasmenu">
-                        <a href="{{ route('admin.partner.index') }}" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-link"></i></span>
-                            <span class="nxl-mtext">Media Partner</span>
-                        </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         <a href="{{ route('admin.banner.index') }}" class="nxl-link">

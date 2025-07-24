@@ -23,8 +23,8 @@ class FacilitieController extends Controller
     {
         $request->validate([
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
-            'judul' => 'nullable|string|max:255',
-            'keterangan' => 'nullable|string'
+            'judul' => 'nullable|string|max:100',
+            'keterangan' => 'nullable|string|max:100'
         ]);
 
         $fotoPath = null;
@@ -52,8 +52,8 @@ class FacilitieController extends Controller
         // Validasi data input
         $validatedData = $request->validate([
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
-            'judul' => 'nullable|string|max:255',
-            'keterangan' => 'nullable|string'
+            'judul' => 'nullable|string|max:100',
+            'keterangan' => 'nullable|string|max:100'
         ]);
 
         $imagePath = $facilitie->gambar;

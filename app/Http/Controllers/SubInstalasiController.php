@@ -27,12 +27,13 @@ class SubInstalasiController extends Controller
             'instalasi_id' => 'required|exists:instalasis,id',
             'nama_sub' => 'required|string|max:255',
             'keterangan' => 'required|string|max:255',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif',
+            'logo' => 'string|max:255',
+            'foto' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
         $fotoPath = null;
-        if ($request->hasFile('logo')) {
-            $file = $request->file('logo');
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
             $fotoPath = $file->store('instalasi', 'public'); 
         }
 
@@ -40,7 +41,8 @@ class SubInstalasiController extends Controller
             'instalasi_id' => $request->instalasi_id,
             'nama_sub' => $request->nama_sub,
             'keterangan' => $request->keterangan,
-            'logo' => $fotoPath,
+            'logo' => $request->logo,
+            'foto' => $fotoPath,
         ]);
 
         return redirect()->route('admin.sub-instalasi.index')->with('success', 'Sub Instalasi berhasil ditambahkan!');
@@ -58,21 +60,22 @@ class SubInstalasiController extends Controller
             'instalasi_id' => 'required|exists:instalasis,id',
             'nama_sub' => 'required|string|max:255',
             'keterangan' => 'required|string|max:255',
-            'logo' => 'image|mimes:jpeg,png,jpg,gif',
+            'logo' => 'string|max:255',
+            'foto' => 'image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        $imagePath = $subInstalasi->logo;
+        $imagePath = $subInstalasi->foto;
 
-        if ($request->hasFile('logo')) {
-            if ($subInstalasi->logo) {
-                Storage::disk('public')->delete($subInstalasi->logo);
+        if ($request->hasFile('foto')) {
+            if ($subInstalasi->foto) {
+                Storage::disk('public')->delete($subInstalasi->foto);
             }
-            $imagePath = $request->file('logo')->store('instalasi', 'public');
+            $imagePath = $request->file('foto')->store('instalasi', 'public');
         }
 
         $dataToUpdate = $validatedData;
 
-        $dataToUpdate['logo'] = $imagePath;
+        $dataToUpdate['foto'] = $imagePath;
 
         $subInstalasi->update($dataToUpdate);
 
@@ -81,8 +84,8 @@ class SubInstalasiController extends Controller
 
     public function destroy(Sub_Instalasi $subInstalasi)
     {
-        if ($subInstalasi->logo) { 
-            Storage::disk('public')->delete($subInstalasi->logo);
+        if ($subInstalasi->foto) { 
+            Storage::disk('public')->delete($subInstalasi->foto);
         }
 
         $subInstalasi->delete();

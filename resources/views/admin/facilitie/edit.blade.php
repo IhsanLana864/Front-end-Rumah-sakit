@@ -79,6 +79,7 @@
                                 @error('judul')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
+                                <small class="form-text text-muted">Maksimal 100 karakter</small>
                             </div>
 
                             <div class="col-12 mb-4">
@@ -88,6 +89,7 @@
                                 @error('keterangan')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
+                                <small class="form-text text-muted">Maksimal 100 karakter</small>
                             </div>
                         </div>
                         <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">

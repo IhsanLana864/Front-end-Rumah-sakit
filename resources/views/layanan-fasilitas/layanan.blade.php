@@ -59,7 +59,7 @@
                                         <div class="service-item">
                                             <div class="service-icon-wrapper">
                                                 @if ($subInstalasi->logo)
-                                                    <img src="{{ asset('storage/' . $subInstalasi->logo) }}" alt="{{ $subInstalasi->nama_sub ?? 'Logo Layanan' }}" style="max-width: 48px; max-height: 48px; object-fit: contain;">
+                                                    <i class="bi bi-{{ $subInstalasi->logo }}"></i>
                                                 @else
                                                     <i class="fa fa-stethoscope"></i>
                                                 @endif
@@ -67,7 +67,7 @@
                                             <div class="service-details">
                                                 <h5>{{ $subInstalasi->nama_sub }}</h5>
                                                 <p>{{ $subInstalasi->keterangan ?? 'Deskripsi layanan belum tersedia.' }}</p>
-                                                <ul class="service-benefits">
+                                                <!-- <ul class="service-benefits">
                                                     @if (isset($subInstalasi->benefits) && !empty($subInstalasi->benefits))
                                                         @php
                                                             $benefitsArray = explode(',', $subInstalasi->benefits);
@@ -78,11 +78,11 @@
                                                     @else
                                                         <li><i class="fa fa-info-circle"></i>Manfaat belum terdaftar secara spesifik.</li>
                                                     @endif
-                                                </ul>
-                                                <a href="{{ url('service-details.html') }}" class="service-link">
+                                                </ul> -->
+                                                <!-- <a href="{{ url('service-details.html') }}" class="service-link">
                                                     <span>Lihat Detail</span>
                                                     <i class="fa fa-arrow-right"></i>
-                                                </a>
+                                                </a> -->
                                             </div>
                                         </div>
                                     </div>

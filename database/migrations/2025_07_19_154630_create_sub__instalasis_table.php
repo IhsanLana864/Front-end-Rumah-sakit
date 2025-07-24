@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama_sub');
             $table->string('keterangan');
             $table->string('logo')->nullable();
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

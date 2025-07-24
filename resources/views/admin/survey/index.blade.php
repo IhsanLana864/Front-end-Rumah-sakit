@@ -80,9 +80,6 @@
                                             <td>{{ $survey->survey9 }}</td>
                                             <td>
                                                 <div class="hstack gap-2 justify-content-end">
-                                                    <a href="{{ route('admin.survey.edit', $survey->id) }}" class="avatar-text avatar-md">
-                                                        <i class="feather feather-edit-3"></i>
-                                                    </a>
                                                     <form action="{{ route('admin.survey.destroy', $survey->id) }}" method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')

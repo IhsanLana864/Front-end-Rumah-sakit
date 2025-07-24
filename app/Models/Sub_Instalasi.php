@@ -17,6 +17,7 @@ class Sub_Instalasi extends Model
         'nama_sub',
         'keterangan',
         'logo',
+        'foto',
     ];
 
     /**

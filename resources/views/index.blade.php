@@ -29,7 +29,7 @@
                                         <span class="badge-accent" data-aos="fade-up" data-aos-delay="150">Motto</span>
                                     @endif
 
-                                    @if ($company->motto)
+                                    @if ($company->visi)
                                         <h1 data-aos="fade-up" data-aos-delay="200">{{ $company->visi }}</h1>
                                     @else
                                         <h1 data-aos="fade-up" data-aos-delay="200">Menjadi Rumah Sakit Unggulan yang Mendukung Terwujudnya Masyarakat Cianjur Sehat dan Mandiri</h1>
@@ -199,12 +199,12 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="department-card">
                             <div class="department-image">
-                                <img src="{{ asset('storage/' . $Sub_Instalasi->logo) }}" alt="Cardiology Department"
+                                <img src="{{ asset('storage/' . $Sub_Instalasi->foto) }}" alt="{{ $Sub_Instalasi->nama_sub }}"
                                     class="img-fluid" />
                             </div>
                             <div class="department-content">
                                 <div class="department-icon">
-                                    <i class="fas fa-heartbeat"></i>
+                                    <i class="bi bi-{{ $Sub_Instalasi->logo }}"></i>
                                 </div>
                                 <h3>{{ $Sub_Instalasi->nama_sub }}</h3>
                                 <p>
