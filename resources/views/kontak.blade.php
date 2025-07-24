@@ -97,13 +97,30 @@
                     <div class="social-links-panel">
                         <h5>Ikuti Kami</h5>
                         <div class="social-icons">
-                            <a href="https://www.facebook.com/rsud.sindangbarang" target="_blank"><i
-                                    class="bi bi-facebook"></i></a>
-                            <a href="https://www.instagram.com/rsudsindangbarang/" target="_blank"><i
-                                    class="bi bi-instagram"></i></a>
-                            <a href="https://www.tiktok.com/@rsud_sindangbarang" target="_blank"><i
-                                    class="bi bi-tiktok"></i></a>
-                            <a href="#" target="_blank"><i class="bi bi-youtube"></i></a>
+                            @forelse ($sosmeds as $sosmed)
+                                <a href="{{ $sosmed->link }}" target="_blank">
+                                    {{-- LOGIKA UNTUK MENAMPILKAN IKON SESUAI PLATFORM --}}
+                                    @switch($sosmed->nama_sosmed)
+                                        @case('Facebook')
+                                            <i class="bi bi-facebook"></i>
+                                            @break
+                                        @case('Instagram')
+                                            <i class="bi bi-instagram"></i>
+                                            @break
+                                        @case('Tiktok')
+                                            <i class="bi bi-tiktok"></i>
+                                            @break
+                                        @case('Youtube')
+                                            <i class="bi bi-youtube"></i>
+                                            @break
+                                        @default
+                                            <i class="bi bi-link"></i> {{-- Icon default jika platform tidak dikenali --}}
+                                    @endswitch
+                                </a>
+                            @empty
+                                {{-- Tampilan alternatif jika tidak ada data sosmeds sama sekali --}}
+                                <span>Tidak ada link media sosial yang terdaftar.</span>
+                            @endforelse
                         </div>
                     </div>
                 </div>

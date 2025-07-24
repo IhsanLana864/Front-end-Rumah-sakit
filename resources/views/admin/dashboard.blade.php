@@ -19,11 +19,6 @@
                         <span>Back</span>
                     </a>
                 </div>
-                <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
-                    <div id="reportrange" class="reportrange-picker d-flex align-items-center">
-                        <span class="reportrange-picker-field"></span>
-                    </div>
-                </div>
             </div>
             <div class="d-md-none d-flex align-items-center">
                 <a href="javascript:void(0)" class="page-header-right-open-toggle">

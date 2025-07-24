@@ -24,7 +24,8 @@ class PageController extends Controller
     public function mainPage()
     {
         $company = Company::first();
-        return view('layouts.main', compact('company'));
+        $sosmeds = Sosmed::all();
+        return view('layouts.main', compact('company', 'sosmeds'));
     }
 
     //Beranda
@@ -32,59 +33,66 @@ class PageController extends Controller
     {
         $banners = Banner::first();
         $company = Company::first();
+        $sosmeds = Sosmed::all();
         $dokters = Dokter::limit(6)->get();
         $Sub_Instalasis = Sub_Instalasi::limit(6)->get();
         $internal = Internal::first();
-        return view('index', compact('banners', 'company', 'dokters','Sub_Instalasis', 'internal'));
+        return view('index', compact('banners', 'company', 'dokters','Sub_Instalasis', 'internal', 'sosmeds'));
     }
 
     //Layanan & Fasilitas
     public function layanan()
     {
         $company = Company::first();
+        $sosmeds = Sosmed::all();
         $layanans = Layanan::all();
         $instalasis = Instalasi::with('subInstalasis')->get();
-        return view('layanan-fasilitas.layanan', compact('company', 'layanans', 'instalasis'));
+        return view('layanan-fasilitas.layanan', compact('company', 'layanans', 'instalasis', 'sosmeds'));
     }
 
     public function fasilitas()
     {
         $company = Company::first();
+        $sosmeds = Sosmed::all();
         $facilities = Facilitie::all();
 
-        return view('layanan-fasilitas.fasilitas', compact('company', 'facilities'));
+        return view('layanan-fasilitas.fasilitas', compact('company', 'facilities', 'sosmeds'));
     }
 
     //Kegiatan
     public function kegiatan()
     {
         $company = Company::first();
+        $sosmeds = Sosmed::all();
         $kegiatans = Kegiatan::all();
-        return view('kegiatan', compact('company', 'kegiatans'));
+        return view('kegiatan', compact('company', 'kegiatans', 'sosmeds'));
     }
 
     //Profil
     public function profile()
     {
         $company = Company::first();
+        $sosmeds = Sosmed::all();
         $partners = Partner::all();
         $internal = Internal::first();
         $tentang_kami = Tentang_Kami::first();
-        return view('profil.tentang-kami', compact('company', 'partners', 'internal', 'tentang_kami'));
+        return view('profil.tentang-kami', compact('company', 'partners', 'internal', 'tentang_kami', 'sosmeds'));
     }
 
     public function dokter()
     {
         $dokters = Dokter::all();
         $company = Company::first();
-        return view('profil.dokter', compact('dokters', 'company'));
+        $sosmeds = Sosmed::all();
+        return view('profil.dokter', compact('dokters', 'company', 'sosmeds'));
     }
 
     public function manajerial()
     {
         $manajerials = Manajerial::all();
         $company = Company::first();
-        return view('profil.manajemen', compact('manajerials', 'company'));
+        $sosmeds = Sosmed::all();
+        return view('profil.manajemen', compact('manajerials', 'company', 'sosmeds'));
     }
 
     //Berita & Artikel
