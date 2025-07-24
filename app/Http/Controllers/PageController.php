@@ -16,6 +16,7 @@ use App\Models\Instalasi;
 use App\Models\Sub_Instalasi;
 use App\Models\Facilitie;
 use App\Models\Internal;
+use App\Models\Tentang_Kami;
 
 class PageController extends Controller
 {
@@ -68,7 +69,8 @@ class PageController extends Controller
         $company = Company::first();
         $partners = Partner::all();
         $internal = Internal::first();
-        return view('profil.tentang-kami', compact('company', 'partners', 'internal'));
+        $tentang_kami = Tentang_Kami::first();
+        return view('profil.tentang-kami', compact('company', 'partners', 'internal', 'tentang_kami'));
     }
 
     public function dokter()

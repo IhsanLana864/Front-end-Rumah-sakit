@@ -49,6 +49,7 @@
                             <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.internal.index') }}">Internal</a></li>
                             <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.sosmed.index') }}">Social Media</a></li>
                             <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.partner.index') }}">Media Partner</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.tentang-kami.index') }}">Foto Company</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">

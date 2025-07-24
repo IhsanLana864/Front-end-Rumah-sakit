@@ -81,17 +81,14 @@
                 <div class="col-lg-6">
                     <div class="image-section" data-aos="fade-left" data-aos-delay="200">
                         <div class="main-image">
-                            <img src="{{ asset('assets/img/health/consultation-3.webp') }}" alt="Healthcare consultation"
-                                class="img-fluid">
+                            <img src="{{ asset('storage/' . $tentang_kami->gambar1) }}" alt="RSUD Sindangbarang" class="img-fluid">
                         </div>
                         <div class="image-grid">
                             <div class="grid-item">
-                                <img src="{{ asset('assets/img/health/facilities-2.webp') }}" alt="Medical facility"
-                                    class="img-fluid">
+                                <img src="{{ asset('storage/' . $tentang_kami->gambar2) }}" alt="RSUD Sindangbarang" class="img-fluid">
                             </div>
                             <div class="grid-item">
-                                <img src="{{ asset('assets/img/health/staff-5.webp') }}" alt="Medical staff"
-                                    class="img-fluid">
+                                <img src="{{ asset('storage/' . $tentang_kami->gambar3) }}" alt="RSUD Sindangbarang" class="img-fluid">
                             </div>
                         </div>
                     </div>

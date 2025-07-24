@@ -20,6 +20,7 @@ use App\Http\Controllers\InstalasiController;
 use App\Http\Controllers\SubInstalasiController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\InternalController;
+use App\Http\Controllers\TentangKamiController;
 
 // ==============================
 // 🔰 Beranda
@@ -88,6 +89,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
         Route::resource('instalasi', InstalasiController::class);
         Route::resource('sub-instalasi', SubInstalasiController::class);
         Route::resource('internal', InternalController::class);
+        Route::resource('tentang-kami', TentangKamiController::class);
     });
 
     // Rute yang HANYA bisa diakses oleh Super Admin
