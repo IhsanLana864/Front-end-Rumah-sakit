@@ -39,9 +39,9 @@ Route::prefix('layanan-fasilitas')->name('layanan.')->group(function () {
 // 📂 Profil RS
 // ==============================
 Route::prefix('profil')->name('profil.')->group(function () {
-    Route::get('/tentang-kami', [PageController::class, 'profile'])->name('tentang-kami'); // /profil/tentang-kami
-    Route::get('/manajemen', [PageController::class, 'manajerial'])->name('manajemen');         // /profil/manajemen
-    Route::get('/dokter', [PageController::class, 'dokter'])->name('dokter');                 // /profil/dokter
+    Route::get('/tentang-kami', [PageController::class, 'profile'])->name('tentang-kami');
+    Route::get('/manajemen', [PageController::class, 'manajerial'])->name('manajemen');
+    Route::get('/dokter', [PageController::class, 'dokter'])->name('dokter');                 
 });
 
 // ==============================

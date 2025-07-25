@@ -5251,16 +5251,16 @@ section,
 }
 
 .contact .form-container h3 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: var(--heading-color);
-  background: linear-gradient(120deg, var(--heading-color), color-mix(in srgb, var(--heading-color), var(--accent-color) 30%));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--heading-color);
+    background: linear-gradient(120deg, var(--heading-color), color-mix(in srgb, var(--heading-color), var(--accent-color) 30%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
+
 
 .contact .form-container p {
   font-size: 15px;
