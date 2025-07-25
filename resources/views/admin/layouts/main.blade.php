@@ -87,7 +87,7 @@
                     <li class="nxl-item nxl-hasmenu">
                         <a href="{{ route('admin.layanan.index') }}" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-airplay"></i></span>
-                            <span class="nxl-mtext">Layanan</span>
+                            <span class="nxl-mtext">Jadwal Layanan</span>
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -122,10 +122,12 @@
                         </a>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
-                        <a href="{{ route('admin.akun.index') }}" class="nxl-link">
-                            <span class="nxl-micon"><i class="feather-user"></i></span>
-                            <span class="nxl-mtext">Admin</span>
-                        </a>
+                        @if (Auth::check() && Auth::user()->role === 'super_admin')
+                            <a href="{{ route('admin.akun.index') }}" class="nxl-link">
+                                <span class="nxl-micon"><i class="feather-user"></i></span>
+                                <span class="nxl-mtext">Admin</span>
+                            </a>
+                        @endif
                     </li>
                 </ul>
             </div>
@@ -164,61 +166,63 @@
                 </div>
             </div>
             <div class="header-right ms-auto">
-    <div class="d-flex align-items-center flex-wrap">
+                <div class="d-flex align-items-center flex-wrap">
 
-        {{-- Dark/Light Mode Toggle --}}
-        <div class="nxl-h-item dark-light-theme me-2">
-            <a href="javascript:void(0);" class="nxl-head-link dark-button">
-                <i class="feather-moon"></i>
-            </a>
-            <a href="javascript:void(0);" class="nxl-head-link light-button" style="display: none">
-                <i class="feather-sun"></i>
-            </a>
-        </div>
+                    {{-- Dark/Light Mode Toggle --}}
+                    <div class="nxl-h-item dark-light-theme me-2">
+                        <a href="javascript:void(0);" class="nxl-head-link dark-button">
+                            <i class="feather-moon"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="nxl-head-link light-button" style="display: none">
+                            <i class="feather-sun"></i>
+                        </a>
+                    </div>
 
-        {{-- User Dropdown --}}
-        <div class="dropdown nxl-h-item">
-            <a href="javascript:void(0);" class="d-flex align-items-center" data-bs-toggle="dropdown" role="button" data-bs-auto-close="outside">
-                <div class="d-none d-md-block text-start me-2">
-                    <h6 class="text-dark mb-0 text-truncate" style="max-width: 200px;" title="{{ Auth::user()->email }}">
-                        {{ Auth::user()->email }}
-                    </h6>
-                    <span class="fs-12 fw-medium text-muted">{{ Auth::user()->role }}</span>
-                </div>
-                <i class="feather-user fs-5 d-md-none"></i> {{-- Icon user untuk tampilan kecil --}}
-            </a>
+                    {{-- User Dropdown --}}
+                    <div class="dropdown nxl-h-item">
+                        <a href="javascript:void(0);" class="d-flex align-items-center" data-bs-toggle="dropdown"
+                            role="button" data-bs-auto-close="outside">
+                            <div class="d-none d-md-block text-start me-2">
+                                <h6 class="text-dark mb-0 text-truncate" style="max-width: 200px;"
+                                    title="{{ Auth::user()->email }}">
+                                    {{ Auth::user()->email }}
+                                </h6>
+                                <span class="fs-12 fw-medium text-muted">{{ Auth::user()->role }}</span>
+                            </div>
+                            <i class="feather-user fs-5 d-md-none"></i> {{-- Icon user untuk tampilan kecil --}}
+                        </a>
 
-            <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-user-dropdown p-3">
-                <div class="dropdown-header px-0">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <h6 class="text-dark mb-0 text-truncate" style="max-width: 200px;" title="{{ Auth::user()->email }}">
-                                {{ Auth::user()->email }}
-                            </h6>
-                            <span class="fs-12 fw-medium text-muted">{{ Auth::user()->role }}</span>
+                        <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-user-dropdown p-3">
+                            <div class="dropdown-header px-0">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <h6 class="text-dark mb-0 text-truncate" style="max-width: 200px;"
+                                            title="{{ Auth::user()->email }}">
+                                            {{ Auth::user()->email }}
+                                        </h6>
+                                        <span class="fs-12 fw-medium text-muted">{{ Auth::user()->role }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="{{ route('profile') }}" class="dropdown-item mt-2">
+                                <i class="feather-settings"></i>
+                                <span>Account Settings</span>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="dropdown-item">
+                                    <i class="feather-log-out"></i>
+                                    <span>Logout</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
-
-                <a href="{{ route('profile') }}" class="dropdown-item mt-2">
-                    <i class="feather-settings"></i>
-                    <span>Account Settings</span>
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="dropdown-item">
-                        <i class="feather-log-out"></i>
-                        <span>Logout</span>
-                    </button>
-                </form>
             </div>
-        </div>
-    </div>
-</div>
-
 
         </div>
     </header>
