@@ -123,10 +123,10 @@
                     </li>
                     <li class="nxl-item nxl-hasmenu">
                         @if (Auth::check() && Auth::user()->role === 'super_admin')
-                            <a href="{{ route('admin.akun.index') }}" class="nxl-link">
-                                <span class="nxl-micon"><i class="feather-user"></i></span>
-                                <span class="nxl-mtext">Admin</span>
-                            </a>
+                        <a href="{{ route('admin.akun.index') }}" class="nxl-link">
+                            <span class="nxl-micon"><i class="feather-user"></i></span>
+                            <span class="nxl-mtext">Admin</span>
+                        </a>
                         @endif
                     </li>
                 </ul>
