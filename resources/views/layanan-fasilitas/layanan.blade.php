@@ -67,22 +67,6 @@
                                             <div class="service-details">
                                                 <h5>{{ $subInstalasi->nama_sub }}</h5>
                                                 <p>{{ $subInstalasi->keterangan ?? 'Deskripsi layanan belum tersedia.' }}</p>
-                                                <!-- <ul class="service-benefits">
-                                                    @if (isset($subInstalasi->benefits) && !empty($subInstalasi->benefits))
-                                                        @php
-                                                            $benefitsArray = explode(',', $subInstalasi->benefits);
-                                                        @endphp
-                                                        @foreach ($benefitsArray as $benefit)
-                                                            <li><i class="fa fa-check-circle"></i>{{ trim($benefit) }}</li>
-                                                        @endforeach
-                                                    @else
-                                                        <li><i class="fa fa-info-circle"></i>Manfaat belum terdaftar secara spesifik.</li>
-                                                    @endif
-                                                </ul> -->
-                                                <!-- <a href="{{ url('service-details.html') }}" class="service-link">
-                                                    <span>Lihat Detail</span>
-                                                    <i class="fa fa-arrow-right"></i>
-                                                </a> -->
                                             </div>
                                         </div>
                                     </div>
@@ -166,7 +150,7 @@
                             <p>Buat janji temu dengan dokter poliklinik kami dengan mudah. Hubungi kami untuk informasi
                                 lebih lanjut mengenai jadwal dokter.</p>
                             <div class="cta-buttons">
-                                <a href="#" class="btn-book">Buat Janji Temu</a>
+                                <a href="https://api.whatsapp.com/send/?phone=6282130677599&text&type=phone_number&app_absent=0" class="btn-book">Buat Janji Temu</a>
                                 <a href="{{ route('kontak') }}" class="btn-contact">Hubungi Kami</a>
                             </div>
                         </div>
