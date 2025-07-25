@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/css/vendors.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/css/daterangepicker.min.css') }}" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/theme.min.css') }}" />    
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/theme.min.css') }}" />
 </head>
 
 <body>
@@ -24,7 +24,8 @@
         <div class="navbar-wrapper">
             <div class="m-header">
                 <a href="#" class="b-brand d-flex align-items-center">
-                    <img src="{{ asset('assets/img/logo-rs.svg') }}" alt="RSUD Sindangbarang Logo" class="logo-img" style="width: 20%;">
+                    <img src="{{ asset('assets/img/logo-rs.svg') }}" alt="RSUD Sindangbarang Logo" class="logo-img"
+                        style="width: 20%;">
                     <h1 style="font-size:10px; padding: 5px 0 0 5px;">RSUD Sindangbarang</h1>
                 </a>
             </div>
@@ -42,14 +43,20 @@
                     <li class="nxl-item nxl-hasmenu">
                         <a href="javascript:void(0);" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-home"></i></span>
-                            <span class="nxl-mtext">Company</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                            <span class="nxl-mtext">Company</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.company.index') }}">Profile</a></li>
-                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.internal.index') }}">Internal</a></li>
-                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.sosmed.index') }}">Social Media</a></li>
-                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.partner.index') }}">Media Partner</a></li>
-                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.tentang-kami.index') }}">Foto Company</a></li>
+                            <li class="nxl-item"><a class="nxl-link"
+                                    href="{{ route('admin.company.index') }}">Profile</a></li>
+                            <li class="nxl-item"><a class="nxl-link"
+                                    href="{{ route('admin.internal.index') }}">Internal</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.sosmed.index') }}">Social
+                                    Media</a></li>
+                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.partner.index') }}">Media
+                                    Partner</a></li>
+                            <li class="nxl-item"><a class="nxl-link"
+                                    href="{{ route('admin.tentang-kami.index') }}">Foto Company</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -67,11 +74,14 @@
                     <li class="nxl-item nxl-hasmenu">
                         <a href="javascript:void(0);" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-sliders"></i></span>
-                            <span class="nxl-mtext">Instalasi</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                            <span class="nxl-mtext">Instalasi</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.instalasi.index') }}">Instalasi</a></li>
-                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.sub-instalasi.index') }}">Sub Instalasi</a></li>
+                            <li class="nxl-item"><a class="nxl-link"
+                                    href="{{ route('admin.instalasi.index') }}">Instalasi</a></li>
+                            <li class="nxl-item"><a class="nxl-link"
+                                    href="{{ route('admin.sub-instalasi.index') }}">Sub Instalasi</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -83,11 +93,14 @@
                     <li class="nxl-item nxl-hasmenu">
                         <a href="javascript:void(0);" class="nxl-link">
                             <span class="nxl-micon"><i class="feather-image"></i></span>
-                            <span class="nxl-mtext">Gallery</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                            <span class="nxl-mtext">Gallery</span><span class="nxl-arrow"><i
+                                    class="feather-chevron-right"></i></span>
                         </a>
                         <ul class="nxl-submenu">
-                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.kegiatan.index') }}">Kegiatan</a></li>
-                            <li class="nxl-item"><a class="nxl-link" href="{{ route('admin.facilitie.index') }}">Fasilitas</a></li>
+                            <li class="nxl-item"><a class="nxl-link"
+                                    href="{{ route('admin.kegiatan.index') }}">Kegiatan</a></li>
+                            <li class="nxl-item"><a class="nxl-link"
+                                    href="{{ route('admin.facilitie.index') }}">Fasilitas</a></li>
                         </ul>
                     </li>
                     <li class="nxl-item nxl-hasmenu">
@@ -149,48 +162,65 @@
                         </a>
                     </div>
                 </div>
-                </div>
+            </div>
             <div class="header-right ms-auto">
-                <div class="d-flex align-items-center">
-                    <div class="nxl-h-item dark-light-theme">
-                        <a href="javascript:void(0);" class="nxl-head-link me-0 dark-button">
-                            <i class="feather-moon"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="nxl-head-link me-0 light-button" style="display: none">
-                            <i class="feather-sun"></i>
-                        </a>
-                    </div>
+    <div class="d-flex align-items-center flex-wrap">
 
-                    <div class="dropdown nxl-h-item">
-                        <a href="javascript:void(0);" data-bs-toggle="dropdown" role="button" data-bs-auto-close="outside">
-                            <h6 class="text-dark mb-0">{{ Auth::user()->name }}</h6>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-user-dropdown">
-                            <div class="dropdown-header">
-                                <div class="d-flex align-items-center">
-                                    <div>
-                                        <h6 class="text-dark mb-0">{{ Auth::user()->email }}</h6>
-                                        <span class="fs-12 fw-medium text-muted">{{ Auth::user()->role }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="{{ route('profile') }}" class="dropdown-item">
-                                <i class="feather-settings"></i>
-                                <span>Account Settings</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="dropdown-item">
-                                <i class="feather-log-out"></i>
-                                <span>Logout</span>
-                            </button>
-                            </form>
+        {{-- Dark/Light Mode Toggle --}}
+        <div class="nxl-h-item dark-light-theme me-2">
+            <a href="javascript:void(0);" class="nxl-head-link dark-button">
+                <i class="feather-moon"></i>
+            </a>
+            <a href="javascript:void(0);" class="nxl-head-link light-button" style="display: none">
+                <i class="feather-sun"></i>
+            </a>
+        </div>
+
+        {{-- User Dropdown --}}
+        <div class="dropdown nxl-h-item">
+            <a href="javascript:void(0);" class="d-flex align-items-center" data-bs-toggle="dropdown" role="button" data-bs-auto-close="outside">
+                <div class="d-none d-md-block text-start me-2">
+                    <h6 class="text-dark mb-0 text-truncate" style="max-width: 200px;" title="{{ Auth::user()->email }}">
+                        {{ Auth::user()->email }}
+                    </h6>
+                    <span class="fs-12 fw-medium text-muted">{{ Auth::user()->role }}</span>
+                </div>
+                <i class="feather-user fs-5 d-md-none"></i> {{-- Icon user untuk tampilan kecil --}}
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-user-dropdown p-3">
+                <div class="dropdown-header px-0">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="text-dark mb-0 text-truncate" style="max-width: 200px;" title="{{ Auth::user()->email }}">
+                                {{ Auth::user()->email }}
+                            </h6>
+                            <span class="fs-12 fw-medium text-muted">{{ Auth::user()->role }}</span>
                         </div>
                     </div>
                 </div>
+
+                <a href="{{ route('profile') }}" class="dropdown-item mt-2">
+                    <i class="feather-settings"></i>
+                    <span>Account Settings</span>
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="dropdown-item">
+                        <i class="feather-log-out"></i>
+                        <span>Logout</span>
+                    </button>
+                </form>
             </div>
-            </div>
+        </div>
+    </div>
+</div>
+
+
+        </div>
     </header>
     <main class="nxl-container">
         <div class="nxl-content">
@@ -201,9 +231,10 @@
                 <span>Copyright ©2025</span>
             </p>
         </footer>
-        </main>
+    </main>
     <!-- Script -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/vendors/js/vendors.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/js/daterangepicker.min.js') }}"></script>
     <script src="{{ asset('assets/vendors/js/apexcharts.min.js') }}"></script>
@@ -213,5 +244,6 @@
     <script src="{{ asset('assets/js/theme-customizer-init.min.js') }}"></script>
 
     @stack('scripts')
-    </body>
+</body>
+
 </html>
