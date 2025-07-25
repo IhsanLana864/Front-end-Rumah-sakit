@@ -146,23 +146,11 @@
                             bawah ini.
                         </p>
 
-                        <form action="#" method="post" class="php-email-form">
+                        <form id="whatsappForm">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="nameInput" name="name"
                                     placeholder="Nama Lengkap" required="" />
                                 <label for="nameInput">Nama Lengkap</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="emailInput" name="email"
-                                    placeholder="Alamat Email" required="" />
-                                <label for="emailInput">Alamat Email</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="subjectInput" name="subject"
-                                    placeholder="Subjek" required="" />
-                                <label for="subjectInput">Subjek</label>
                             </div>
 
                             <div class="form-floating mb-3">
@@ -187,5 +175,34 @@
             </div>
         </div>
     </section>
-
 @endsection
+
+@push('scripts')
+    <script>
+        document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form submit secara default
+
+            const nama = document.getElementById('nameInput').value;
+            const pesan = document.getElementById('messageInput').value;
+
+            // Ambil nomor kontak dari Blade/PHP
+            let rawNomor = "{{ $company->kontak }}";
+
+            // Hapus '0' di awal jika ada
+            if (rawNomor.startsWith('0')) {
+                rawNomor = rawNomor.substring(1); // Ambil substring mulai dari indeks 1
+            }
+
+            // Gabungkan dengan kode negara "62"
+            const nomorWhatsApp = "62" + rawNomor; // Ini akan menjadi "628..."
+
+            // Membuat pesan yang akan dikirim (URL-encoded)
+            const formattedPesan = `Halo, saya ${encodeURIComponent(nama)}.%0A%0A${encodeURIComponent(pesan)}`;
+
+            const whatsappUrl = `https://wa.me/${nomorWhatsApp}?text=${formattedPesan}`;
+
+            // Membuka link WhatsApp di tab/jendela baru
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+@endpush
